@@ -4,3 +4,599 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
+
+@font-face {
+    font-family: 'San Francisco Text';
+    src: url('/assets/fonts/SanFranciscoText-Light.woff2') format('woff2'),
+        url('/assets/fonts/SanFranciscoText-Light.woff') format('woff'),
+        url('/assets/fonts/SanFranciscoText-Light.svg#SanFranciscoText-Light') format('svg');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'San Francisco Text';
+    src: url('/assets/fonts/SanFranciscoText-Regular.woff2') format('woff2'),
+        url('/assets/fonts/SanFranciscoText-Regular.woff') format('woff'),
+        url('/assets/fonts/SanFranciscoText-Regular.svg#SanFranciscoText-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'San Francisco Text';
+    src: url('/assets/fonts/SanFranciscoText-Bold.woff2') format('woff2'),
+        url('/assets/fonts/SanFranciscoText-Bold.woff') format('woff'),
+        url('/assets/fonts/SanFranciscoText-Bold.svg#SanFranciscoText-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'San Francisco Text';
+    src: url('/assets/fonts/SanFranciscoText-Medium.woff2') format('woff2'),
+        url('/assets/fonts/SanFranciscoText-Medium.woff') format('woff'),
+        url('/assets/fonts/SanFranciscoText-Medium.svg#SanFranciscoText-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'San Francisco Text';
+    src: url('/assets/fonts/SanFranciscoText-Semibold.woff2') format('woff2'),
+        url('/assets/fonts/SanFranciscoText-Semibold.woff') format('woff'),
+        url('/assets/fonts/SanFranciscoText-Semibold.svg#SanFranciscoText-Semibold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+@mixin san-francisco-bold{
+	font-family: 'San Francisco Text';
+	font-weight: 700;
+}
+@mixin san-francisco-semi-bold{
+	font-family: 'San Francisco Text';
+	font-weight: 600;
+}
+@mixin san-francisco-medium{
+	font-family: 'San Francisco Text';
+	font-weight: 500;
+}
+@mixin san-francisco-regular{
+	font-family: 'San Francisco Text';
+	font-weight: 400;
+}
+@mixin san-francisco-light{
+	font-family: 'San Francisco Text';
+	font-weight: 200;
+}
+
+body{
+	@include san-francisco-regular;
+}
+h1{
+	@include san-francisco-bold;
+	font-size: 26px;
+}
+.mb-0{
+    margin-bottom: 0 !important;
+    --margin-bottom: 0 !important;
+}
+
+ion-button {
+	--border-radius: 6px;
+	@include san-francisco-semi-bold;
+	font-size: 16px;
+}
+
+ion-img{
+    &.hidden{
+        visibility: hidden;
+        width: 0 !important;
+    }
+}
+.avatar-menu {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    margin: 0;
+}
+
+.avatar-header{
+    width: 32px;
+    height: 32px;
+}
+
+app-clockin.ion-page{
+    background: #f4f4f4;
+}
+
+ion-menu{
+
+    .user-profile-card {
+        display: flex;
+        padding: 20px 15px;
+        align-items: center;
+        border-bottom: 1px solid #F0F0F0;
+        
+
+        > a{
+            display: flex;
+            color: #000000;
+            text-decoration: none;
+            width: 100%;
+            
+            ion-img{
+                width: 54px;
+                height: 54px;
+                background-color: #eeeeee;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+
+            > div{
+
+                padding-left: 15px;
+
+                h2{
+                    @include san-francisco-bold;
+                    font-size: 18px;
+                    margin: 0;
+                    margin-bottom: 3px;
+                }
+                > span{
+                    color: #B2B2B2;
+                    text-transform: capitalize;
+                }
+            }
+        }
+
+        ion-button{
+            --padding-start: 0;
+            --padding-end: 0;
+            --color: #000000;
+        }
+
+    }
+
+    ion-content{
+        --padding-start: 10px;
+        --padding-top: 20px;
+    }
+
+    ion-item{
+        --padding-bottom: 10px;
+        --border-color: #F0F0F0;
+        --background-activated: #ffffff;
+
+        ion-label{
+            font-family: 'San Francisco Text' !important;
+            font-weight: 500;
+            display: flex !important;
+            align-items: center;
+            font-size: 18px !important;
+            margin-bottom: 20px;
+            margin-top: 10px;
+
+            ion-img{
+                width: 18px;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    ion-footer{
+        ion-toolbar{
+            --background: #ffffff;
+            --padding-start: 20px;
+            --padding-end: 20px;
+        }
+    }
+
+    /*.logout-button {
+        position: absolute;
+        width: calc(100% - 45px);
+        bottom: 25px;
+        left: 20px;
+    }*/
+
+}
+
+.user-profile-button{
+    ion-img{
+        width: 32px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+}
+
+ion-tab-button{
+    &.tab-selected{
+        border-top: 1px solid;
+    }
+}
+
+ion-menu-button{
+    --color: #000000;
+}
+
+ion-toolbar{
+
+    --background : #f4f4f4;
+    --border-width: 0px !important;
+
+    ion-title{
+        --color: #000000;
+        @include san-francisco-bold;
+        font-size: 16px;
+    }
+
+    ion-back-button{
+        --color: #000000;
+    }
+}
+
+.bg-light{
+    --ion-background-color : #f4f4f4;
+}
+
+ion-card {
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.1) !important;
+}
+
+
+ion-action-sheet{
+    .action-sheet-button{
+        color: #000000 !important;
+        &.action-sheet-cancel{
+            background-color: #B2B2B2;
+            color: #ffffff !important;
+        }
+    }
+}
+
+.table.table-bordered.monthview-datetable {
+    border: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+    tr{
+        > th{
+            border: 0 !important;
+            font-family: 'San Francisco Text';
+            font-weight: 400;
+        }
+
+        > td{
+            border: 0 !important;
+            padding-top: 15px !important;
+            padding-bottom: 15px !important;
+            font-family: 'San Francisco Text';
+            font-weight: 400;
+        }
+    }
+
+    .monthview-selected{
+        background-color: #EFB725;
+        border-radius: 4px;
+        box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.2);
+    }
+
+}
+
+%-form-label{
+    font-family: 'San Francisco Text';
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.list-forms{
+
+    margin-bottom: 0;
+
+    ion-item{
+        --padding-start: 0;
+        --padding-end: 0;
+        --inner-padding-end: 0;
+        margin-bottom: 1rem;
+
+        &.ion-invalid.ion-touched{
+            
+            ion-label{
+                color: #FF5F5F;
+            }
+            ion-input,
+            ion-datetime,
+            ion-select,
+            ion-textarea{
+                border: 1px solid #FF5F5F;
+            }
+        }
+
+        > ion-label{
+            @extend %-form-label;
+
+            &.highlight{
+                color: #EFB725;
+                font-weight: 700;
+            }
+        }
+
+        ion-input{
+            --color: #000000;
+            --padding-start: 10px !important;
+            --padding-end: 10px !important;
+            --padding-top: 8px !important;
+            --padding-bottom: 8px !important;
+            font-size: 18px;
+            font-family: 'San Francisco Text';
+            font-weight: 400;
+            border: 1px solid #DEDEDE;
+            border-radius: 6px;
+            padding: 12px;
+
+            &:focus{
+                border-color: #EFB725;
+            }
+
+            &.currency-input{
+                background-image: url('/assets/dolor.svg');
+                background-repeat: no-repeat;
+                background-position: calc(100% - 15px) center;
+            }
+        }
+
+        .segment-input{
+            width: 100%;
+
+            > ion-label{
+                @extend %-form-label;
+            }
+
+            ion-segment{
+
+                ion-segment-button{
+                    --padding-top: 10px;
+                    --padding-bottom: 10px;
+                    --border-width: 0;
+                    --background: rgba(178, 178, 178, 0.3);
+                    --color: #000;
+
+                    ion-label{
+                        font-size: 18px;
+                        font-family: 'San Francisco Text';
+                        font-weight: 400;
+                    }
+                }
+
+                &.sliced{
+                    ion-segment-button{
+                        margin-right: 5px;
+                        border-radius: 6px;
+
+                        &:last-child{
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        ion-select{
+            --padding-start: 10px;
+            --padding-end: 10px;
+            border: 1px solid #DEDEDE;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        > ion-datetime{
+            border: 1px solid #DEDEDE;
+            border-radius: 6px;
+            height: 37px;
+            --padding-start: 10px;
+            --padding-end: 10px;
+            --padding-top: 6px;
+            --padding-bottom: 6px;
+        }
+
+        .fraction-input {
+            width: 100%;
+            display: flex;
+
+            > span{
+                display: flex;
+                color: #DEDEDE;
+                align-items: center;
+                font-size: 24px;
+                padding: 0 8px;
+            }
+        }
+
+        .input-append {
+            width: 100%;
+
+            > ion-label{
+                @extend %-form-label;
+            }
+
+            > div{
+                display: flex;
+                align-items: center;
+                > ion-label{
+                    flex: 0 0 45px;
+                    color: rgba(0,0,0,0.2);
+                    text-align: right;
+                }
+            }
+        }
+
+        .inputs-orientation {
+            display: flex;
+            justify-content: space-between;
+
+            > ion-input{
+                flex: 0 0 32%;
+            }
+        }
+
+        ion-textarea{
+            border: 1px solid #DEDEDE;
+            --padding-start: 10px !important;
+            --padding-start: 10px !important;
+            border-radius: 6px;
+        }
+    }
+
+    ion-segment{
+
+        &.cols{
+
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            &.cols-4{
+
+                > ion-segment-button{
+                    flex: 0 0 24%;
+                    margin-right: 1.25% !important;
+                    margin-bottom: 5px;
+
+                    &:nth-child(4n) {
+                        margin-right: 0 !important;
+                    }
+                }
+
+            }
+
+            &.cols-3{
+
+                > ion-segment-button{
+                    flex: 0 0 32%;
+                    margin-right: 2% !important;
+                    margin-bottom: 5px;
+
+                    &:nth-child(3n) {
+                        margin-right: 0 !important;
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+    .inputs-location {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        > ion-item{
+            flex: 0 0 32%;
+        }
+    }
+
+    .upload-button{
+        > label{
+            @extend %-form-label;
+            display: block;
+        }
+        ion-item{
+            --background: #F7F7F7;
+            --padding-start: 15px;
+            --padding-end: 15px;
+            --border-radius: 6px;
+            --border-width: 1px;    
+            --border-colro: #DEDEDE;
+
+            ion-label{
+                font-size: 16px;
+                line-height: 16px;
+            }
+        }
+    }
+
+
+    .date-time-inputs{
+
+        display: flex;
+        justify-content: space-between;
+
+        ion-item{
+            flex: 0 0 49%;
+        }
+    }
+
+    .picker-input {
+        display: block;
+        width: 100%;
+        position: relative;
+
+        ion-datetime{
+            --padding-top: 7px;
+            --padding-bottom: 6px;
+            --padding-start: 10px;
+            --padding-end: 10px;
+            height: 37px;
+            border-radius: 6px;
+            border: 1px solid #DEDEDE;
+        }
+
+        ion-icon{
+            font-size: 24px;
+            position: absolute;
+            z-index: 99;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    }
+
+    ion-list-header {
+        padding-left: 0;
+        position: relative;
+
+        ion-label{
+            font-family: San Francisco Text;
+            font-weight: 700;
+            text-transform: initial;
+            font-size: 20px;
+            padding-right: 20px;
+            background: #fff;
+            letter-spacing: 0;
+        }
+
+        &:before{
+            content: "";
+            border-top: 1px solid #DEDEDE;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+        }
+    }
+
+    .checkboxes-input{
+        display: flex;
+        width: 100%;
+        > div{
+            flex: 0 0 50%;
+        }
+    }
+}
+
+.divider{
+    hr {
+        background: rgba(112, 112, 112, 0.1);
+        margin-bottom: 30px;
+        margin-top: 30px;
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+}
+
+
+.skeleton-center{
+    margin: 0 auto;
+}

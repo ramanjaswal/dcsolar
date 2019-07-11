@@ -1,0 +1,22 @@
+<ion-content padding>
+
+	<ion-button class="back-button" [routerLink]="'/login/signin'" routerDirection="back" fill="clear">
+  		<ion-icon slot="icon-only" name="ios-arrow-round-back"></ion-icon>
+    </ion-button>
+
+    <h1 class="page-title">Forgot<br/> your Password?</h1>
+
+    <form class="reset-form" (submit)="doResetPassword()">
+
+    	<ion-item>
+		  <ion-label position="stacked">Email or User ID</ion-label>
+		  <ion-input type="email" inputmode="email" [(ngModel)]="email" name="email"></ion-input>
+		  <ion-icon name="md-person" slot="end" size="small"></ion-icon>
+		</ion-item>
+
+		<ion-button expand="block" color="primary" size="large" type="submit">SEND PASSWORD</ion-button>
+
+    </form>
+
+
+</ion-content>

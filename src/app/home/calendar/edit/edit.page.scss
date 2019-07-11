@@ -1,0 +1,135 @@
+ion-toolbar{
+	--background : #ffffff;
+	--padding-start: 10px; 	
+	--padding-end: 10px; 
+
+
+
+	ion-button {
+		--ion-toolbar-color: #000000;
+	}	
+}
+
+ion-content{
+	.calendar{
+		background: #ffffff;
+	    padding-top: 0.5rem;
+        
+
+		.calendar-header {
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    border-top: 1px solid #70707033;
+		    border-bottom: 1px solid #70707033;
+
+		    > span{
+		    	font-family: 'San Francisco Text';
+		    	font-weight: 500;
+		    	font-size: 18px;
+		    	color: #000000;
+		    }
+		    ion-button{
+		    	--color: #000000;
+		    }
+		}
+
+	}
+
+	.add-event-button{
+
+	    text-align: center;
+	    background: #E8E8E8;
+        margin-left: 10px;
+    	margin-right: 10px;
+	    margin-top: 1rem;
+	    border-radius: 6px;
+	    padding: 5px;
+
+		ion-button {
+		    --border-radius: 50%;
+		    --padding-start: 0;
+		    --padding-end: 0;
+	        font-size: 26px;
+		    width: 35px;
+		    height: 35px;
+		}
+	}
+
+	.all-events{
+		margin-top: 1rem;
+
+		ion-card{
+			--background: #ffffff;
+		    border-radius: 6px;
+			margin-bottom: 1rem;
+
+			&:before{
+				content: "";
+				width: 2px;
+				height: 35px;
+				background: #EFB725;
+			    position: absolute;
+			    left: 0;
+			    top: 15px;
+			}
+
+			ion-card-content{
+
+				.event-title{
+
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+				    margin-bottom: 8px;
+
+					> h6{
+						font-family: 'San Francisco Text';
+						font-weight: 500;
+						font-size: 22px;
+						color: #000000;
+						margin: 0;
+					}
+
+					> span{
+						font-family: 'San Francisco Text';
+						font-weight: 500;
+						font-size: 16px;
+						color: #B2B2B2;
+
+						ion-icon{
+						    margin-bottom: -4px;
+						    font-size: 20px;
+						    margin-right: 2px;
+						}
+
+					}
+				}
+
+				.event-meta{
+
+					margin-top: 3px;
+
+					> span{
+						font-family: 'San Francisco Text';
+						font-weight: 500;
+						font-size: 12px;
+						color: rgba(0, 0, 0, 0.3);
+					}
+
+					> p{
+						font-family: 'San Francisco Text';
+					    font-weight: 500;
+					    font-size: 16px;
+					    color: #000000;
+					    margin-bottom: 3px;
+					}
+
+				}
+
+			}
+
+		}
+	}
+
+}

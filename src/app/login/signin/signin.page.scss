@@ -1,0 +1,60 @@
+ion-item{
+	--padding-start: 0;
+	--border-color: #F0F0F0;
+
+	ion-label{
+		color: #B2B2B2;
+		font-family: 'San Francisco Text';
+		font-weight: 400;
+	}
+	ion-input{
+		--color: #000;
+		font-family: 'San Francisco Text';
+		font-weight: 500;
+		font-size: 20px;	
+	}
+}
+
+ion-content{
+	--ion-padding: 30px;
+}
+
+.page-title{
+	margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.back-button{
+	--padding-start: 0;
+	--padding-end: 0;
+	--color: #000000;
+	--color-activated: #000000;
+	--color-focused: #000000;
+
+	ion-icon{
+		font-size: 48px;
+		margin-left: -10px;
+	}
+}
+
+
+.forgot-password-link{
+	text-align: right;
+    padding: 12px 0 2px;
+	> ion-button{
+		--color: #969696;
+		font-family: 'San Francisco Text';
+		font-weight: 400;
+		text-transform: initial;
+	}
+}
+
+.recover-account{
+	text-align: center;
+	> ion-button{
+		--color: #969696;
+		font-family: 'San Francisco Text';
+		font-weight: 400;
+		text-transform: initial;
+	}
+}

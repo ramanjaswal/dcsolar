@@ -1,0 +1,163 @@
+
+
+ion-toolbar{
+	--background : #ffffff;
+	--padding-start: 10px; 	
+	--padding-end: 10px; 
+
+
+
+	ion-button {
+		--ion-toolbar-color: #000000;
+	}	
+}
+
+.skeleton-avatar{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.user-card{
+	text-align: center;
+	width: 100%;
+	> .avatar {
+	    position: relative;
+	    max-width: 100px;
+	    height: 100px;
+        margin: 0 auto;
+		margin-top: 5px;
+
+
+    	ion-img{
+    		border-radius: 50%;
+			overflow: hidden;
+		    &.hidden{
+		        visibility: hidden;
+		        width: 0 !important;
+		        height: 0 !important;
+		    }
+		}
+
+		.status{
+		    width: 18px;
+		    height: 18px;
+		    background: #5AFF73;
+		    position: absolute;
+		    bottom: 2px;
+		    right: 8px;
+		    border-radius: 50%;
+		    border: 2px solid #F4F4F4;
+		}
+	}
+	h1{
+		margin: 12px 0 5px 0;
+	}
+	.user-role{
+		display: block;
+		font-size: 16px;
+		color: #B2B2B2;
+		text-transform: capitalize;
+	}
+}
+
+ion-toggle{
+	--background-checked: #4CD964;
+}
+
+ion-radio{
+	--color: #B2B2B2;
+	--color-checked: #4CD964;
+}
+ion-checkbox{
+	--color: #B2B2B2;
+	--background-checked: #4CD964;
+}
+
+.icon-online-status{
+	font-size: 26px;
+	display: flex;
+
+	ion-icon[name='radio-button-on']{
+		color: #4CD964;
+	}
+	ion-icon[name='radio-button-off']{
+		color: #B2B2B2;
+	}
+}
+
+@mixin font-regular{
+	font-family: 'San Francisco Text';
+	font-weight: 400;
+}
+
+%-label-dark{
+	--color: #000000;
+	@include font-regular;
+	font-size: 16px;
+}
+%-label-light{
+	--color: #B2B2B2;
+	font-size: 14px;
+	@include font-regular;
+}
+
+.skeleton-avatar{
+	border-radius: 50%;
+}
+
+.profile-form{
+
+	ion-item-group{
+
+		&.user-info{
+			margin-top: 30px;
+		}
+		&.notifications{
+			margin-top: 25px;
+			ion-label{
+				@extend %-label-dark;
+			}
+
+			ion-item{
+				--padding-bottom: 10px;
+			}
+		}
+		&.security{
+			margin-top: 25px;
+			ion-label{
+				@extend %-label-dark;
+			}
+
+			ion-item{
+				--padding-bottom: 10px;
+			}
+		}
+
+		ion-list-header{
+			ion-label{
+				@extend %-label-light;
+				text-transform: capitalize;
+			}
+		}
+
+	}
+
+	ion-item{
+
+		--border-color: #f4f4f4;
+		margin-bottom: 10px;
+
+		ion-label{
+			@extend %-label-light;
+		}
+
+		ion-input{
+			--color: #000000;
+			font-size: 16px;
+			font-family: 'San Francisco Text';
+			font-weight: 400;
+		}
+	}
+
+}

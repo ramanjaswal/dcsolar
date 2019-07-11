@@ -1,0 +1,23 @@
+ion-toolbar{
+	--background : #ffffff;
+
+	ion-back-button{
+		--color: #000000;
+	}
+}
+
+ion-list{
+	ion-item{
+		--padding-start: 0;
+		--padding-top: 8px;
+		--padding-bottom: 8px;
+
+		--border-color: rgba(112, 112, 112, 0.2);
+
+		ion-label{
+			font-size: 'San Francisco Text';
+			font-weight: 400;
+			font-size: 18px;
+		}
+	}
+}

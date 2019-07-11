@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Mileage</ion-title>
+
+    <ion-buttons slot="end">
+    	<ion-button class="user-profile-button" (click)="presentProfileModal()">
+    		<ion-img slot="end" [src]="user.avatar"></ion-img>
+    	</ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-light">
+
+  <div class="card-mileage">
+
+    <div class="monthly-mileage">
+      <div class="left">
+        <h4>Total This Month</h4>
+        <span>Sep 29 - Oct 29. 2018</span>
+      </div>
+      <div class="right">
+        <span class="total-mileage">450 Miles</span>
+      </div>
+    </div>
+
+    <div class="line-chart-nav">
+      <a href="javascript:;" class="btn-left"><ion-icon name="ios-arrow-back"></ion-icon></a>
+      <span>45.9 Miles</span>
+      <a href="javascript:;" class="btn-right"><ion-icon name="ios-arrow-forward"></ion-icon></a>
+    </div>
+    <canvas #lineCanvas class="line-chart"></canvas>
+
+    <ion-segment mode="md" (ionChange)="tabChanged($event)">
+
+      <ion-segment-button mode="md" value="sep" checked>
+        <ion-label>September</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button mode="md" value="oct">
+        <ion-label>October</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button mode="md" value="nov">
+        <ion-label>November</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button mode="md" value="dec">
+        <ion-label>December</ion-label>
+      </ion-segment-button>
+
+    </ion-segment>
+
+  </div>
+
+  <ion-card class="card-trip" mode="md">
+    <ion-card-header>
+      <h6>Wednesday</h6>
+      <span>45.9 Miles</span>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="'/assets/map.png'"></ion-img>
+
+      <ul class="trip-details">
+        <li>
+          <label>Start</label>
+          <p>Astor Court, 2nd Street</p>
+        </li>
+        <li>
+          <label>End</label>
+          <p>Astor Court, 2nd Street</p>
+        </li>
+        <li>
+          <label>Date</label>
+          <p>25 - 09 - 2018</p>
+        </li>
+        <li>
+          <label>Duration</label>
+          <p>2 Hrs</p>
+        </li>
+      </ul>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addRide()">
+    <ion-fab-button>
+      <ion-icon name="md-arrow-dropright"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

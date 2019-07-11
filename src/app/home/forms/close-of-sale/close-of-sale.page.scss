@@ -1,0 +1,34 @@
+ion-toolbar{
+	--background : #ffffff;
+
+	ion-button {
+		--ion-toolbar-color: #000000;
+
+		&.btn-save{
+			--ion-toolbar-color: #EFB725;
+		}
+	}	
+}
+
+.account-number-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    ion-input{
+    	&:last-child{
+    		max-width: 75px;
+    		margin-left: 20px;
+    	}
+    }
+}
+
+ion-segment{
+    &.wide-last{
+        ion-segment-button{
+            &:last-child{
+                flex: 0 0 45%;
+            }
+        }
+    }
+}

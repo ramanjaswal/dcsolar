@@ -1,0 +1,314 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+  		<ion-button (click)="closeModal()">
+  			<ion-icon slot="icon-only" name="ios-close"></ion-icon>
+  		</ion-button>
+	</ion-buttons>
+    <ion-title>Initial Check Off</ion-title>
+    <ion-buttons slot="end">
+  		<ion-button class="btn-save" (click)="saveForm()" [disabled]="form.invalid">
+  			Save
+  		</ion-button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding [formGroup]="form">
+  <ion-list class="list-forms mb-0" lines="none">
+    <ion-item>
+      <ion-label position="stacked">Project Name</ion-label>
+      <ion-input placeholder="" formControlName="project_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Project Manager</ion-label>
+      <ion-input placeholder="" formControlName="project_manager"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Date</ion-label>
+      <div class="picker-input">
+        <ion-datetime display-format="DD/MM/YYYY" formControlName="date"></ion-datetime>
+        <ion-icon name="md-calendar"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <div class="divider">
+    <hr/>
+  </div>
+  <div class="message alert">
+    <label>Please Check</label>
+    <p>Install details on <strong>COS</strong> and <strong>Permit Package</strong> before filling this form</p>
+  </div>
+
+  <ion-list class="list-forms mb-0" lines="none">
+    
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Did the Layout of the panels need to be changed?</ion-label>
+        <ion-segment formControlName="layout_needs_change">
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">How many inverters?</ion-label>
+      <ion-input placeholder="" formControlName="how_many_inverters"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Were all micros plugged into module?</ion-label>
+        <ion-segment formControlName="micros_plugged_in">
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Location of EMT</ion-label>
+      <ion-input placeholder="" formControlName="location_of_emt"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Junction boxes in attic?</ion-label>
+        <ion-segment formControlName="junction_boxes">
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item [disabled]="form.get('junction_boxes').value == 'No'" >
+      <ion-label position="stacked">How many?</ion-label>
+      <ion-input placeholder="" inputmode="number" formControlName="how_many_boxes" [required]="form.get('junction_boxes').value == 'Yes'"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div class="message alert important">
+    <label>IMPORTANT!!</label>
+    <p>Please take Photos of the junction boxes and Upload to T Sheets</p>
+  </div>
+
+  <ion-list class="list-forms mb-0" lines="none">
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Smurf tube in Main panel?</ion-label>
+        <ion-segment formControlName="smurf_tube">
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Is the system Grounded?</ion-label>
+        <ion-segment formControlName="system_grounded">
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Is it tied, bonded?</ion-label>
+        <ion-segment formControlName="bonded">
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Is Cell Modem installed? Select plan</ion-label>
+        <ion-segment formControlName="cell_modem">
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item [disabled]="form.get('cell_modem').value == 'Yes'">
+      <ion-label position="stacked">If NO, whats the Serial No of the Envoy</ion-label>
+      <ion-input placeholder="" formControlName="envoy_serial_number" [required]="form.get('cell_modem').value == 'No'"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Critter Guard installed? How many rolls?</ion-label>
+        <ion-segment formControlName="criteer_guard"> 
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item [disabled]="form.get('criteer_guard').value == 'No'">
+      <ion-input placeholder="Rolls" inputmode="number" formControlName="rolls" [required]="form.get('criteer_guard').value == 'Yes'"></ion-input>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <ion-label position="stacked" text-wrap>Estimated time it took to install it. <br/>(Number of hours x Number of workers)</ion-label>
+      <ion-input placeholder="Total Man Hrs" inputmode="number" formControlName="total_man_hours"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Are conduits painted?</ion-label>
+        <ion-segment formControlName="conduits_painted">
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Are all silicon sealing done?</ion-label>
+        <ion-segment formControlName="silicon_sealing">
+            <ion-segment-button value="Yes">
+                <ion-label>YES</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="No">
+              <ion-label>NO</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Did you get the photos and mail them?</ion-label>
+        <ion-segment formControlName="photos_mailed">
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item [disabled]="form.get('photos_mailed').value == 'No'">
+      
+      <div class="checkboxes-input">
+        <div>
+          <ion-item>
+            <ion-checkbox formControlName="array_photo"></ion-checkbox>
+            <ion-label>Array</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox formControlName="main_panel_photo"></ion-checkbox>
+            <ion-label>Modules</ion-label>
+          </ion-item>
+        </div>
+
+        <div>
+          <ion-item>
+            <ion-checkbox formControlName="modules_photo"></ion-checkbox>
+            <ion-label>Main Panel</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox formControlName="sub_panel_photo"></ion-checkbox>
+            <ion-label>Sub Panel</ion-label>
+          </ion-item>
+        </div>
+      </div>
+
+    </ion-item>
+
+    <div class="guide">
+      
+      <h4>All Photos to be sent to</h4>
+      <ion-input value="mborchardt@dcsolarelectric.com"></ion-input>
+
+    </div>
+
+    <ion-item>
+      <div class="segment-input">
+        <ion-label position="stacked">Is Final Inspection Scheduled?</ion-label>
+        <ion-segment formControlName="inspection_scheduled">
+          <ion-segment-button value="Yes">
+            <ion-label>YES</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>NO</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </ion-item>
+
+    <ion-item [disabled]="form.get('inspection_scheduled').value == 'No'">
+      <ion-label position="stacked">Date of inspection?</ion-label>
+      <div class="picker-input">
+        <ion-datetime display-format="DD/MM/YYYY" formControlName="date_of_inspection"></ion-datetime>
+        <ion-icon name="md-calendar"></ion-icon>
+      </div>
+    </ion-item>
+
+
+    <div class="upload-button">
+        <label>Copy of COS, Blank Change order form, Cut sheets, SLD, site layout, Materials List</label>
+        <ion-item button detail="false" (click)="uploadPhoto('attachments')">
+          <ion-label>Upload a photo</ion-label>
+          <ion-badge slot="end" *ngIf="filesCount('attachments') > 0">{{ filesCount('attachments') }}</ion-badge>
+          <ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+        </ion-item>
+    </div>
+
+    <ion-item>
+        <ion-label position="stacked">Site Notes</ion-label>
+        <ion-textarea rows="5" formControlName="site_notes"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

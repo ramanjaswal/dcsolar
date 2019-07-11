@@ -1,0 +1,19 @@
+ion-toolbar{
+	--background : #ffffff;
+
+	ion-button {
+		--ion-toolbar-color: #000000;
+
+		&.btn-save{
+			--ion-toolbar-color: #EFB725;
+		}
+	}	
+}
+
+ion-list{
+	> h6 {
+	    margin: 2rem 0;
+	    font-weight: 700;
+	    font-size: 18px;
+	}
+}

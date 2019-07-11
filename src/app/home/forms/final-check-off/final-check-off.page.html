@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+  		<ion-button (click)="closeModal()">
+  			<ion-icon slot="icon-only" name="ios-close"></ion-icon>
+  		</ion-button>
+	</ion-buttons>
+    <ion-title>Final Check Off</ion-title>
+    <ion-buttons slot="end">
+  		<ion-button class="btn-save" (click)="saveForm()" [disabled]="form.invalid">
+  			Save
+  		</ion-button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding [formGroup]="form">
+	<ion-list class="list-forms mb-0" lines="none">
+		<ion-item>
+			<ion-label position="stacked">Project Name</ion-label>
+			<ion-input placeholder="" formControlName="project_name"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Project Manager</ion-label>
+			<ion-input placeholder="" formControlName="project_manager"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Date</ion-label>
+			<div class="picker-input">
+				<ion-datetime display-format="DD/MM/YYYY" formControlName="date"></ion-datetime>
+				<ion-icon name="md-calendar"></ion-icon>
+			</div>
+		</ion-item>
+
+		<ion-item>
+			<ion-label text-wrap position="stacked">Finish a complete visual check of the site, make notes below:</ion-label>
+			<ion-textarea rows="5" formControlName="visual_check_notes"></ion-textarea>
+		</ion-item>
+	</ion-list>
+	<div class="divider">
+	    <hr/>
+  	</div>
+	<ion-list class="list-forms" lines="none">
+		<div class="guide">
+			
+			<p>Take Photos of site and upload into <a href="javascript:;">One Drive</a></p>
+			<h4>All Photos to be sent to</h4>
+
+			<ion-input value="mborchardt@dcsolarelectric.com"></ion-input>
+			<span>OR</span>
+			<ion-input value="408 829 9940"></ion-input>
+
+		</div>
+
+		<ion-item>
+			<div class="segment-input">
+				<ion-label position="stacked">Sun Eye Shots already taken?</ion-label>
+				<ion-segment formControlName="sun_eye_shot_taken">
+				  <ion-segment-button value="Yes">
+				    <ion-label>YES</ion-label>
+				  </ion-segment-button>
+				  <ion-segment-button value="No">
+				    <ion-label>NO</ion-label>
+				  </ion-segment-button>
+				</ion-segment>
+			</div>
+		</ion-item>
+
+		<ion-item>
+			<div class="segment-input">
+				<ion-label position="stacked">Minimal Shade</ion-label>
+				<ion-segment formControlName="minimal_shade">
+				  <ion-segment-button value="Yes">
+				    <ion-label>YES</ion-label>
+				  </ion-segment-button>
+				  <ion-segment-button value="No">
+				    <ion-label>NO</ion-label>
+				  </ion-segment-button>
+				</ion-segment>
+			</div>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Array</ion-label>
+			<ion-input placeholder="" formControlName="array"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Azimuth</ion-label>
+			<ion-input placeholder="" formControlName="azimuth"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Tilt</ion-label>
+			<ion-input placeholder="" formControlName="tilt"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Photos taken</ion-label>
+			<ion-input placeholder="" formControlName="photos_taken"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Concerns or comments by owner</ion-label>
+			<ion-textarea rows="5" formControlName="owner_comments"></ion-textarea>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked" text-wrap>Comments or revisions suggested by Inspector?</ion-label>
+			<ion-textarea rows="5" formControlName="inspector_comments"></ion-textarea>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Additional Comments</ion-label>
+			<ion-textarea rows="5" formControlName="additional_comments"></ion-textarea>
+		</ion-item>
+
+	</ion-list>
+</ion-content>

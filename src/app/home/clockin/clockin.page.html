@@ -1,0 +1,226 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Clock In</ion-title>
+
+    <ion-buttons slot="end">
+    	<ion-button class="user-profile-button" (click)="presentProfileModal()">
+    		<ion-img slot="end" [src]="user.avatar"></ion-img>
+    		<!-- <ion-skeleton-text class="avatar-header" animated></ion-skeleton-text> -->
+    	</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-light">
+
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+	<ion-card class="card-clockin" mode="md">
+	  <ion-card-header [ngClass]="{ 'loading' : !dataLoaded }">
+	    <ion-segment mode="md" (ionChange)="tabChanged($event)">
+
+		  <ion-segment-button mode="md" value="today" checked>
+		    <ion-label>Today</ion-label>
+		  </ion-segment-button>
+
+		  <ion-segment-button mode="md" value="week">
+		    <ion-label>Week</ion-label>
+		  </ion-segment-button>
+
+		  <ion-segment-button mode="md" value="month">
+		    <ion-label>Month</ion-label>
+		  </ion-segment-button>
+
+		</ion-segment>
+	  </ion-card-header>
+
+	  <ion-card-content  [ngClass]="{ 'loading' : !dataLoaded }">
+			
+				<ul *ngIf="activeTab === 'today'">
+					<li>
+						<div class="time">
+							<h1>{{today.hours}}</h1>
+							<span>Hours</span>
+						</div>
+					</li>
+					<li>
+						<ion-button *ngIf="!tracking" class="toggle-clock" (click)="startClock()">
+							<ion-icon name="md-play" slot="icon-only"></ion-icon>
+						</ion-button>
+
+						<ion-button *ngIf="tracking" class="toggle-clock stop" (click)="stopClock()">
+							<ion-icon name="square" slot="icon-only"></ion-icon>
+						</ion-button>
+					</li>
+					<li>
+						<div class="time">
+							<h1>{{today.mins}}</h1>
+							<span>Mins</span>
+						</div>
+					</li>
+				</ul>
+
+				<ul *ngIf="activeTab === 'week'">
+					<li>
+						<div class="time">
+							<h1>{{week.hours}}</h1>
+							<span>Hours</span>
+						</div>
+						
+					</li>
+					<li>
+						<ion-button *ngIf="!tracking" class="toggle-clock" (click)="startClock()">
+							<ion-icon name="md-play" slot="icon-only"></ion-icon>
+						</ion-button>
+
+						<ion-button *ngIf="tracking" class="toggle-clock stop" (click)="stopClock()">
+							<ion-icon name="square" slot="icon-only"></ion-icon>
+						</ion-button>
+					</li>
+					<li>
+						<div class="time">
+							<h1>{{week.mins}}</h1>
+							<span>Mins</span>
+						</div>
+					</li>
+				</ul>
+
+				<ul *ngIf="activeTab === 'month'">
+					<li>
+						<div class="time">
+							<h1>{{month.hours}}</h1>
+							<span>Hours</span>
+						</div>
+					</li>
+					<li>
+						<ion-button *ngIf="!tracking" class="toggle-clock" (click)="startClock()">
+							<ion-icon name="md-play" slot="icon-only"></ion-icon>
+						</ion-button>
+
+						<ion-button *ngIf="tracking" class="toggle-clock stop" (click)="stopClock()">
+							<ion-icon name="square" slot="icon-only"></ion-icon>
+						</ion-button>
+					</li>
+					<li>
+						<div class="time">
+							<h1>{{month.mins}}</h1>
+							<span>Mins</span>
+						</div>
+					</li>
+				</ul>
+
+	  </ion-card-content>
+
+	</ion-card>
+
+	<ion-card class="card-customer" mode="md">
+		<ion-card-content>
+			<ion-item *ngIf="dataLoaded" [routerLink]="'/customers/clockin'">
+				<ion-label *ngIf="!selectedCustomer">Select Customer</ion-label>
+				<ion-label *ngIf="selectedCustomer">
+					<span *ngIf="selectedCustomer.first_name" [innerHtml]="selectedCustomer.first_name"></span>&nbsp;<span *ngIf="selectedCustomer.last_name" [innerHtml]="selectedCustomer.last_name"></span>
+				</ion-label>
+			</ion-item>
+			<!-- <ion-item *ngIf="dataLoaded">
+			    <ion-label>Select Customer</ion-label>
+			    <ion-select [(ngModel)]="form.customer" placeholder="" interface="alert">
+			      <ion-select-option [value]="customer.ac_id" *ngFor="let customer of customers">{{customer.first_name}} {{customer.last_name}}</ion-select-option>
+			    </ion-select>
+		  	</ion-item> -->
+			<ion-item *ngIf="!dataLoaded">
+				<ion-skeleton-text width="100%" animated></ion-skeleton-text>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
+
+	<!-- <ion-card class="card-mileage" mode="md">
+		<ion-card-content>
+			<ion-item>
+				<ion-input placeholder="Enter Mileage"></ion-input>
+			</ion-item>
+		</ion-card-content>
+	</ion-card> -->
+
+	<ion-card class="card-comments" mode="md">
+		<ion-card-content>
+			<ion-item *ngIf="dataLoaded">
+				<ion-input [(ngModel)]="form.comment" placeholder="Comments"></ion-input>
+			</ion-item>
+			<ion-item *ngIf="!dataLoaded">
+				<ion-skeleton-text width="100%" animated></ion-skeleton-text>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card class="card-clocked-hours" mode="md">
+		<ion-card-content *ngIf="showCharts">
+			<h6>Clocked Hours</h6>
+			<div>
+				<canvas #barCanvas class="bar-chart"></canvas>
+			</div>
+		</ion-card-content>
+
+		<ion-card-content *ngIf="!showCharts">
+			<h6><ion-skeleton-text width="60%" animated></ion-skeleton-text></h6>
+			<div>
+				<ion-skeleton-text width="100%" animated class="barchart-skeleton"></ion-skeleton-text>
+			</div>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card class="card-pie-chart" mode="md">
+		<ion-card-content *ngIf="showCharts">
+			<div class="pie-chart">
+				<canvas #pieCanvas class="pie-chart"></canvas>
+			</div>
+			<ul class="the-data">
+				<!-- <li>
+					<span class="color purple"></span>
+					<span class="title">Customer Work</span>
+					<span class="time">02:00 hrs</span>
+				</li> -->
+				<li>
+					<span class="color orange"></span>
+					<span class="title">Customer Work</span>
+					<span class="time">{{workHours()}}</span>
+				</li>
+				<li>
+					<span class="color grey"></span>
+					<span class="title">Break</span>
+					<span class="time">{{breakHours()}}</span>
+				</li>
+			</ul>
+		</ion-card-content>
+
+		<ion-card-content *ngIf="!showCharts">
+			<div class="pie-chart">
+				<ion-skeleton-text width="100%" animated class="piechart-skeleton"></ion-skeleton-text>
+			</div>
+			<ul class="the-data">
+				<!-- <li>
+					<span class="color purple"></span>
+					<span class="title"><ion-skeleton-text width="100px" animated ></ion-skeleton-text></span>
+					<span class="time"><ion-skeleton-text width="70px" animated ></ion-skeleton-text></span>
+				</li> -->
+				<li>
+					<span class="color orange"></span>
+					<span class="title"><ion-skeleton-text width="100px" animated ></ion-skeleton-text></span>
+					<span class="time"><ion-skeleton-text width="70px" animated ></ion-skeleton-text></span>
+				</li>
+				<li>
+					<span class="color grey"></span>
+					<span class="title"><ion-skeleton-text width="100px" animated ></ion-skeleton-text></span>
+					<span class="time"><ion-skeleton-text width="70px" animated ></ion-skeleton-text></span>
+				</li>
+			</ul>
+		</ion-card-content>
+
+	</ion-card>
+
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button [defaultHref]="'/home/calendar'" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Event</ion-title>
+    <ion-buttons slot="end">
+    	<ion-button>Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-light">
+	<div class="event-title">
+		<ion-input placeholder="Meeting Title"></ion-input>
+	</div>
+
+	<ion-card>
+		<ion-card-content>
+			<ion-list lines="full">
+			  <ion-item detail>
+			  	<ion-icon name="ios-navigate" slot="start"></ion-icon>
+			    <ion-label>Location</ion-label>
+			  </ion-item>
+			  <ion-item detail routerLink="/customers">
+			  	<ion-icon name="md-person" slot="start"></ion-icon>
+			    <ion-label>Customer</ion-label>
+			  </ion-item>
+			  <ion-item detail routerLink="/home/calendar/duration">
+			  	<ion-icon name="ios-time" slot="start"></ion-icon>
+			    <ion-label>Duration</ion-label>
+			  </ion-item>
+			  <ion-item lines="none" detail (click)="toggleDescription()" [detailIcon]="showDescription ? 'ios-arrow-down' : 'ios-arrow-forward' ">
+			  	<ion-icon name="ios-document" slot="start"></ion-icon>
+			    <ion-label>Description</ion-label>
+			  </ion-item>
+
+			  <ion-item  *ngIf="showDescription" class="description-item">
+
+			  	<div>
+				    <ion-textarea rows="5"></ion-textarea>
+				    <ion-button class="start" expand="block" size="large">
+				    	SAVE DESCRIPTION
+				    </ion-button>
+				</div>
+
+			  </ion-item>
+
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

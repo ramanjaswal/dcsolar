@@ -1,0 +1,75 @@
+ion-toolbar{
+	--background : #ffffff;
+	--padding-start: 10px; 	
+	--padding-end: 10px; 
+
+	ion-back-button{
+		--color: #000000;
+	}
+}
+
+.event-title{
+	background: #fff;
+    padding: 16px;
+
+    ion-input{
+    	border: 1px solid #DEDEDE;
+    	border-radius: 6px;
+    	--padding-start: 10px;
+	    --padding-end: 10px;
+    }
+}
+
+ion-card{
+	--background: #ffffff;
+	ion-card-content{
+	    padding: 0;
+
+	    ion-list{
+	    	ion-item{
+	    		--background: #ffffff;
+    		    --padding-top: 8px;
+    			--padding-bottom: 8px;
+    			
+    			ion-label{
+    				font-family: 'San Francisco Text';
+					font-weight: 500;
+					font-size: 18px;
+    			}
+
+    			&.description-item{
+
+    				--padding-top: 10px;
+				    --padding-bottom: 22px;
+				    --padding-end: 12px;
+				    --padding-start: 20px;
+
+				    > div{
+				    	width: 100%;
+
+				    	ion-textarea{
+						    border: 1px solid #DEDEDE;
+						    border-radius: 6px;
+						    height: 150px;
+						    margin-bottom: 1rem;
+					        --padding-start: 10px;
+
+					        font-size: 14px;
+					        font-family: 'San Francisco Text';
+					        font-weight: 400;
+	    				}
+
+	    				ion-button{
+	    					height: 55px;
+	    					font-family: 'San Francisco Text';
+							font-weight: 600;
+							font-size: 18px;
+	    				}
+				    }
+
+    				
+    			}
+	    	}
+	    }
+	}
+}

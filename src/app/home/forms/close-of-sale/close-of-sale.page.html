@@ -1,0 +1,812 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+  		<ion-button (click)="closeModal()">
+  			<ion-icon slot="icon-only" name="ios-close"></ion-icon>
+  		</ion-button>
+	</ion-buttons>
+    <ion-title>Close of Sale</ion-title>
+    <ion-buttons slot="end">
+  		<ion-button class="btn-save" (click)="saveForm()" [disabled]="form.invalid">
+  			Save
+  		</ion-button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding [formGroup]="form">
+
+  	<ion-list class="list-forms" lines="none">
+  		
+  		<ion-item>
+			<ion-label position="stacked">Designer</ion-label>
+			<ion-input placeholder="" formControlName="designer"></ion-input>
+		</ion-item>
+
+		<ion-item>
+	      <ion-label position="stacked">Date</ion-label>
+	      <div class="picker-input">
+	        <ion-datetime display-format="DD/MM/YYYY" formControlName="date"></ion-datetime>
+	        <ion-icon name="md-calendar"></ion-icon>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+			<ion-label position="stacked">Client Name</ion-label>
+			<ion-input placeholder="" formControlName="client_name"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Address</ion-label>
+			<ion-input placeholder="" formControlName="address"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Phone #</ion-label>
+			<ion-input placeholder="" formControlName="phone" inputmode="tel"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Email</ion-label>
+			<ion-input type="email" placeholder="" formControlName="email" inputmode="email"></ion-input>
+		</ion-item>
+
+	</ion-list>
+
+	<div class="divider">
+		<hr/>
+	</div>
+
+	<ion-list class="list-forms" lines="none">
+		<h6>I am ready to purchase the following Solar Electric System described as:</h6>
+
+		<ion-item>
+			<ion-label position="stacked">Proposal/Quote #</ion-label>
+			<ion-input placeholder="" formControlName="proposal"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Totaling (kW) (kilowatts DC rated)</ion-label>
+			<ion-input placeholder="" formControlName="totaling" inputmode="number"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">AC System Size (kW)</ion-label>
+			<ion-input placeholder="" formControlName="ac_system_size" inputmode="number"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Modules</ion-label>
+			<ion-input placeholder="" formControlName="modules"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Inverters</ion-label>
+			<ion-input placeholder="" formControlName="inverters"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Proposal Year 1 Production</ion-label>
+			<ion-input placeholder="" formControlName="proposal_year"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Other</ion-label>
+			<ion-input placeholder="" formControlName="other"></ion-input>
+		</ion-item>
+
+  	</ion-list>
+
+  	<div class="divider">
+	    <hr/>
+  	</div>
+
+  	<ion-list class="list-forms" lines="none">
+
+  		<ion-item>
+	      <div class="segment-input">
+	        <ion-label text-wrap>I understand that this bid is for the specific parameters designated in the system description above as well as on any attached supporting documents. Significantly changing the location of the array or scope of work MAY result in a change order affecting the job price.</ion-label>
+	        <ion-segment formControlName="accept_bid">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button Value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I have reviewed the prices below with the designer</ion-label>
+	        <ion-segment formControlName="accept_prices">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <div class="date-time-inputs currency-inputs">
+			<ion-item>
+				<ion-label position="stacked">Equipment</ion-label>
+				<ion-input class="currency-input" formControlName="equipment_price" inputmode="number"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="stacked">Install</ion-label>
+				<ion-input class="currency-input" formControlName="install_price" inputmode="number"></ion-input>
+			</ion-item>
+		</div>
+
+		<div class="date-time-inputs currency-inputs">
+			<ion-item>
+				<ion-label position="stacked">Deposit</ion-label>
+				<ion-input class="currency-input" formControlName="deposit_price" inputmode="number"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="stacked">Permit</ion-label>
+				<ion-input class="currency-input" formControlName="permit_price" inputmode="number"></ion-input>
+			</ion-item>
+		</div>
+
+		<div class="date-time-inputs currency-inputs">
+			<ion-item>
+				<ion-label position="stacked">Rebate</ion-label>
+				<ion-input class="currency-input" formControlName="rebate_price" inputmode="number"></ion-input>
+			</ion-item>
+			<ion-item></ion-item>
+		</div>
+
+		<ion-item>
+			<ion-label class="highlight" position="stacked">TOTAL SYSTEM COST</ion-label>
+			<ion-input placeholder="" class="currency-input" formControlName="total_cost" inputmode="number"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label text-wrap>Details of Materials for this job must also include purchasing of below items</ion-label>
+		</ion-item>
+
+		<ion-item>
+			<div class="segment-input">
+				<ion-label position="stacked">Module Colour</ion-label>
+				<ion-segment class="sliced" formControlName="module_color">
+				  	<ion-segment-button value="Silver">
+				    	<ion-label>Silver</ion-label>
+				  	</ion-segment-button>
+				  	<ion-segment-button value="Black">
+				    	<ion-label>Black</ion-label>
+				  	</ion-segment-button>
+				  	<ion-segment-button value="Other">
+						<ion-label>Other</ion-label>
+					</ion-segment-button>
+				</ion-segment>
+			</div>
+		</ion-item>
+
+		<ion-item [hidden]="form.get('module_color').value != 'Other'">
+			<ion-input placeholder="Module Colour" formControlName="module_color_other" [required]="form.get('module_color').value == 'Other'"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<div class="segment-input">
+				<ion-label position="stacked">Racking</ion-label>
+				<ion-segment class="sliced" formControlName="racking">
+				  	<ion-segment-button value="Silver">
+				    	<ion-label>Silver</ion-label>
+				  	</ion-segment-button>
+				  	<ion-segment-button value="Black">
+				    	<ion-label>Black</ion-label>
+				  	</ion-segment-button>
+				  	<ion-segment-button value="Other">
+						<ion-label>Other</ion-label>
+					</ion-segment-button>
+				</ion-segment>
+			</div>
+		</ion-item>
+
+		<ion-item [hidden]="form.get('racking').value != 'Other'">
+			<ion-input placeholder="Racking" formControlName="racking_other" [required]="form.get('racking').value == 'Other'"></ion-input>
+		</ion-item>
+
+
+		<ion-item>
+	  		<ion-label position="stacked">Special Items</ion-label>
+	  		<ion-textarea rows="5" formControlName="special_items"></ion-textarea>
+	  	</ion-item>
+
+  	</ion-list>
+
+  	<div class="divider">
+	    <hr/>
+  	</div>
+
+  	<ion-list class="list-forms" lines="none">
+  		
+  		<ion-item>
+  			<ion-label text-wrap>I have paid the following amount to DC Solar Electric</ion-label>
+		</ion-item>
+		  
+		<ion-item>
+			<ion-label position="stacked">Amount</ion-label>
+			<ion-input placeholder="" formControlName="amount_paid" inputmode="number"></ion-input>
+		</ion-item>
+
+	    <ion-item>
+			<ion-label position="stacked">Check Number</ion-label>
+			<ion-input placeholder="" formControlName="check_number"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Received by</ion-label>
+			<ion-input placeholder="" formControlName="recieved_by"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Date</ion-label>
+			<ion-datetime display-format="DD/MM/YYYY" formControlName="payment_date"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">The system is being financed by</ion-label>
+			<ion-input placeholder="" formControlName="financed_by"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Deposit to be paid by lender</ion-label>
+			<ion-input placeholder="" formControlName="deposit_paid_by_lender" inputmode="number"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Name(s) on Solar Contract</ion-label>
+			<ion-input placeholder="" formControlName="name_on_solar_contract"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Name(s) on Property Deed</ion-label>
+			<ion-input placeholder="" formControlName="name_on_property_deed"></ion-input>
+		</ion-item>
+
+		<ion-list-header>
+		    <ion-label>Utility Info</ion-label>
+		  </ion-list-header>
+		  
+		<div formGroupName="utility">
+			<ion-item formGroupName="account_number">
+				<ion-label position="stacked">Account No</ion-label>
+				<div class="account-number-input">
+					<ion-input placeholder="" formControlName="pre"></ion-input>
+					<ion-input placeholder="" formControlName="post"></ion-input>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Meter No</ion-label>
+				<ion-input placeholder="" formControlName="meter_number"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Service ID</ion-label>
+				<ion-input placeholder="" formControlName="service_id"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Name on Utility Account</ion-label>
+				<ion-input placeholder="" formControlName="name_on_utility_account"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Sq. ft. of total conditioned air space</ion-label>
+				<ion-input placeholder="" formControlName="sq_feet"></ion-input>
+			</ion-item>
+		</div>
+
+  	</ion-list>
+
+  	<div class="divider">
+	    <hr/>
+  	</div>
+
+  	<ion-list class="list-forms" lines="none" formGroupName="utility">
+		  
+  		<ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I have reviewed the utility rates with the designer and am choosing the following rate schedule</ion-label>
+	        <ion-segment formControlName="accept_utility_rates">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+			<div class="segment-input">
+				<ion-label position="stacked">Time of Use rates</ion-label>
+				<ion-segment class="sliced cols cols-3" formControlName="time_of_use_rates">
+				  <ion-segment-button value="E-TOU-A">
+				    <ion-label>E-TOU-A</ion-label>
+				  </ion-segment-button>
+				  <ion-segment-button value="E-TOU-B">
+				    <ion-label>E-TOU-B</ion-label>
+				  </ion-segment-button>
+				  <ion-segment-button value="A6">
+				    <ion-label>A6</ion-label>
+				  </ion-segment-button>
+				  <ion-segment-button value="A10">
+				    <ion-label>A10</ion-label>
+				  </ion-segment-button>
+				  <ion-segment-button value="Other">
+				    <ion-label>Other</ion-label>
+				  </ion-segment-button>
+				</ion-segment>
+			</div>
+		</ion-item>
+
+		<ion-item [hidden]="form.get('utility').get('time_of_use_rates').value != 'Other'">
+			<ion-input placeholder="Other" formControlName="time_of_use_rates_other" [required]="form.get('utility').get('time_of_use_rates').value == 'Other'"></ion-input>
+		</ion-item>
+
+  	</ion-list>
+
+  	<div class="divider">
+	    <hr/>
+  	</div>
+
+  	<ion-list class="list-forms" lines="none" formGroupName="utility">
+
+  		<ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I am enrolled in any of the following PG&E rate programs</ion-label>
+	        <ion-segment formControlName="enrolled_in_pge">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item [disabled]="form.get('utility').get('enrolled_in_pge').value == 'No'">
+	      <div class="checkboxes-input">
+	        <div>
+	          <ion-item>
+	            <ion-checkbox formControlName="peak_of_day"></ion-checkbox>
+	            <ion-label>Peak Day Pricing</ion-label>
+	          </ion-item>
+	          <ion-item>
+	            <ion-checkbox formControlName="smart_rate"></ion-checkbox>
+	            <ion-label>Smart Rate</ion-label>
+	          </ion-item>
+	        </div>
+
+	        <div>
+	          <ion-item>
+	            <ion-checkbox formControlName="scheduled_load"></ion-checkbox>
+	            <ion-label>Scheduled Load</ion-label>
+	          </ion-item>
+	          <ion-item>
+	            <ion-checkbox formControlName="load_reduction"></ion-checkbox>
+	            <ion-label>Load Reduction</ion-label>
+	          </ion-item>
+	        </div>
+	      </div>
+
+	    </ion-item>
+
+	    <ion-item [disabled]="form.get('utility').get('enrolled_in_pge').value == 'No'">
+			<ion-input placeholder="Other" formControlName="program_other"></ion-input>
+		</ion-item>
+
+  	</ion-list>
+
+  	<div class="divider">
+	    <hr/>
+  	</div>
+
+  	<ion-list class="list-forms" lines="none" formGroupName="utility">
+
+		<ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I understand that the system production in annual kilowatt-hours and financial savings analyses provided in the proposal are estimates and affected by weather variances, utility rates, panel cleanliness, and actual household electrical usage etc.</ion-label>
+	        <ion-segment formControlName="accept_system">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>The location where the system will be installed is permitted through the Authority Having Jurisdiction (AHJ) below:</ion-label>
+	        <ion-segment formControlName="location_permitted">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+			<ion-input placeholder="Other" formControlName="location_permitted_other"></ion-input>
+		</ion-item>
+
+  	</ion-list>
+
+  	<div class="divider">
+	    <hr/>
+  	</div>
+
+  	<ion-list class="list-forms" lines="none">
+
+  		<ion-item>
+			<ion-label position="stacked" text-wrap>This is a <strong>GROUND / ROOF</strong> mounted system.<br/>Age of roof years</ion-label>
+			<ion-input formControlName="age_of_roof" inputmode="number"></ion-input>
+		</ion-item>
+
+		<ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked">Module Layout</ion-label>
+	        <ion-segment class="sliced" formControlName="module_layout">
+	          <ion-segment-button value="Portrait">
+	            <ion-label>Portrait</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="Landscape">
+	            <ion-label>Landsape</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-list-header>
+		    <ion-label>Array Description</ion-label>
+	  	</ion-list-header>
+		
+		<div formGroupName="array_description">
+		  
+			<ion-item>
+				<ion-label position="stacked">Location</ion-label>
+				<ion-input placeholder="" formControlName="location"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked"># of Rows</ion-label>
+				<ion-input placeholder="" formControlName="number_of_rows" inputmode="number"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked"># of  Panels per Row</ion-label>
+				<ion-input placeholder="" formControlName="number_of_panels" inputmode="number"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Photos of Roofing Materials (Select One)</ion-label>
+					<ion-segment class="sliced cols cols-3 wide-last" formControlName="roofing_material">
+						<ion-segment-button value="Comp">
+							<ion-label>Comp</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="Spanish">
+							<ion-label>Spanish</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="Curve Tile">
+							<ion-label>Curve Tile</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="Flat Tile">
+							<ion-label>Flat Tile</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="Metal">
+							<ion-label>Metal</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="Ground Mount">
+							<ion-label>Ground Mount</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<div class="upload-button">
+				<label>Upload Comp Photo</label>
+				<ion-item button detail="false" (click)="uploadPhoto('comp_photo')">
+					<ion-label>Upload a photo</ion-label>
+					<ion-badge slot="end" *ngIf="filesCount('comp_photo') > 0">{{ filesCount('comp_photo') }}</ion-badge>
+					<ion-icon name="md-cloud-upload" slot end></ion-icon>
+				</ion-item>
+			</div>
+
+		</div>
+
+  	</ion-list>
+
+  	<div class="divider">
+	    <hr/>
+  	</div>
+
+  	<ion-list class="list-forms" lines="none" formGroupName="array_description">
+
+  		<ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I have reviewed with the designer the location of all equipment to be installed, including but not limited to modules, inverters and monitoring, also including any ground work or trenching if applicable. These are subject to minor design modifications by our director of operations onsite, to be discussed with you prior to implementation.</ion-label>
+	        <ion-segment formControlName="accept_location">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <ion-label position="stacked">I will be doing the following work myself</ion-label>
+	      <ion-input placeholder="" formControlName="my_work"></ion-input>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked">Is the system monitored?</ion-label>
+	        <ion-segment formControlName="system_monitored">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <ion-label position="stacked">Method of connecting to the internet router</ion-label>
+	      <ion-input placeholder="" formControlName="connecting_method"></ion-input>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I am aware that DC SOLAR ELECTRIC will initially assist me in setting up the internet connection to the system monitoring, and that I am responsible for maintaining that connection.</ion-label>
+	        <ion-segment formControlName="accept_internet_connection">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I have been informed about CO and smoke detector requirements per CA state law and understand that I may not be able to pass final inspection without adhering to them.</ion-label>
+	        <ion-segment formControlName="informed_about_co">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I DO already have CO monitors and smoke detectors installed per the above requirement.</ion-label>
+	        <ion-segment formControlName="already_have_co">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I own dogs/cats?</ion-label>
+	        <ion-segment formControlName="own_dogs_cats">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked">Photos of Roofing Materials (Select One)</ion-label>
+	        <ion-segment class="sliced cols cols-3" formControlName="photos_of_roofing">
+	          <ion-segment-button value="Inside">
+	            <ion-label>Inside</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="Outside">
+	            <ion-label>Outside</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="Both">
+	            <ion-label>Both</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="NA">
+	            <ion-label>N/A</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+  	</ion-list>
+
+  	<div class="divider">
+	    <hr/>
+  	</div>
+
+  	<ion-list class="list-forms" lines="none">
+  		<ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I have a locked gate at my property?</ion-label>
+	        <ion-segment formControlName="have_locked_gate">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <ion-label position="stacked">The gate code is</ion-label>
+	      <ion-input placeholder="" formControlName="gate_code"></ion-input>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I am part of an HOA Community?</ion-label>
+	        <ion-segment formControlName="part_of_hoa">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked">I will provide their contact info via</ion-label>
+	        <ion-segment class="sliced" formControlName="contact_info_via">
+	          <ion-segment-button value="Text">
+	            <ion-label>Text</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="Email">
+	            <ion-label>Email</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="Phone">
+	            <ion-label>Phone</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <ion-label position="stacked">Desired date of Install</ion-label>
+	      <div class="picker-input">
+	        <ion-datetime display-format="DD/MM/YYYY" formControlName="desired_date_of_install"></ion-datetime>
+	        <ion-icon name="md-calendar"></ion-icon>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <ion-label position="stacked">Dates you are unavailable</ion-label>
+	      <div class="picker-input">
+	        <ion-datetime display-format="DD/MM/YYYY" formControlName="unavailable_dates"></ion-datetime>
+	        <ion-icon name="md-calendar"></ion-icon>
+	      </div>
+	    </ion-item>
+
+  	</ion-list>
+
+  	<div class="divider">
+	    <hr/>
+  	</div>
+
+  	<ion-list class="list-forms" lines="none">
+
+  		<ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I understand that the install date(s) are subject to change due to weather and product/crew availability.</ion-label>
+	        <ion-segment formControlName="accept_install_dates">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>During final inspection, I understand that I will need to be present to allow the inspector access to my structure.</ion-label>
+	        <ion-segment formControlName="accept_availability">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I understand that DC Solar will give me $300 for any solar electric system sale generated by a direct referral.</ion-label>
+	        <ion-segment formControlName="accept_referral">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item>
+	      <div class="segment-input">
+	        <ion-label position="stacked" text-wrap>I would like a DC Solar yard sign at my location. if <strong>yes</strong>, for how long?</ion-label>
+	        <ion-segment formControlName="dc_solar_yard">
+	          <ion-segment-button value="Yes">
+	            <ion-label>YES</ion-label>
+	          </ion-segment-button>
+	          <ion-segment-button value="No">
+	            <ion-label>NO</ion-label>
+	          </ion-segment-button>
+	        </ion-segment>
+	      </div>
+	    </ion-item>
+
+	    <ion-item [hidden]="form.get('dc_solar_yard').value == 'No'" >
+		  <ion-input
+			  placeholder="How Long?" 
+			  formControlName="dc_solar_yard_duration" 
+			  [required]="form.get('dc_solar_yard').value == 'Yes'"></ion-input>
+	    </ion-item>
+
+	    <ion-item>
+	      <ion-label position="stacked" text-wrap>We will be calling you to talk about the next steps. Best time to be reached</ion-label>
+	      <ion-input placeholder="" formControlName="best_time_to_reach"></ion-input>
+	    </ion-item>
+
+	    <ion-item>
+	        <ion-label position="stacked">Additional Notes</ion-label>
+	        <ion-textarea rows="5" formControlName="additional_notes"></ion-textarea>
+	    </ion-item>
+
+  	</ion-list>
+
+</ion-content>

@@ -1,0 +1,36 @@
+
+<ion-content padding>
+
+	<ion-button class="back-button" [routerLink]="'/login'" routerDirection="back" fill="clear">
+      <ion-icon slot="icon-only" name="ios-arrow-round-back"></ion-icon>
+    </ion-button>
+
+	<h1 class="page-title">Sign in <br/>to your DC Solar</h1>
+
+	<form class="login-form" (submit)="doSignIn()">
+		
+		<ion-item>
+		  <ion-label position="stacked">Email or User ID</ion-label>
+		  <ion-input [(ngModel)]="credentials.username" name="username" required></ion-input>
+		  <ion-icon name="md-person" slot="end" size="small"></ion-icon>
+		</ion-item>
+
+		<ion-item>
+		  <ion-label position="stacked">Password</ion-label>
+		  <ion-input [(ngModel)]="credentials.password" name="password" type="password"></ion-input>
+		  <ion-icon name="md-lock" slot="end" size="small"></ion-icon>
+		</ion-item>
+
+		<div class="forgot-password-link">
+			<ion-button [routerLink]="'/login/reset'" routerDirection="forward" fill="clear">Forgot Password?</ion-button>
+		</div>
+
+		<ion-button expand="block" color="primary" size="large" type="submit">SIGN IN</ion-button>
+
+		<div class="recover-account">
+			<ion-button [routerLink]="'/login/reset'" routerDirection="forward" fill="clear">Don’t know your DC Solar Account info?</ion-button>
+		</div>
+
+	</form>
+
+</ion-content>

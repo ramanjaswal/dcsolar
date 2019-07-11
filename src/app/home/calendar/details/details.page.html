@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button [defaultHref]="'/home/calendar'" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Event Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-light" padding>
+
+	<div class="event-title">
+        <h6>60 Minute Meeting</h6>
+        <span><ion-icon name="md-time"></ion-icon> 60 Mins</span>
+  	</div>
+
+  	<ion-card class="card-trip" mode="md">
+	   
+	    <ion-card-content>
+	      <ion-img [src]="'/assets/map.png'"></ion-img>
+
+	      <ul class="trip-details">
+	        <li>
+	          <label>Start</label>
+	          <p>Astor Court, 2nd Street</p>
+	        </li>
+	        <li>
+	          <label>End</label>
+	          <p>Astor Court, 2nd Street</p>
+	        </li>
+	        <li>
+	          <label>Date</label>
+	          <p>25 - 09 - 2018</p>
+	        </li>
+	        <li>
+	          <label>Duration</label>
+	          <p>2 Hrs</p>
+	        </li>
+	        <li>
+	          <label>Description</label>
+	          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+	        </li>
+	      </ul>
+
+	    </ion-card-content>
+  	</ion-card>
+
+  	<div class="event-actions">
+  		<ion-button class="start" expand="block" size="large" (click)="presentEditModal()">
+	    	EDIT
+	    </ion-button>
+	    <ion-button  class="stop" expand="block" size="large">
+	    	DELETE
+	    </ion-button>
+  	</div>
+
+</ion-content>

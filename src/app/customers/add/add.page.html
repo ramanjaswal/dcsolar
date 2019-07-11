@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+  		<ion-button (click)="closeModal()">
+  			<ion-icon slot="icon-only" name="ios-close"></ion-icon>
+  		</ion-button>
+	</ion-buttons>
+    <ion-title>Add New Customer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+	<div class="event-title">
+		<ion-input placeholder="Search"></ion-input>
+	</div>
+
+	<ion-list lines="none">
+		<ion-item class="item-name" lines="full">
+			<ion-label position="stacked">Name</ion-label>
+			<ion-input placeholder=""></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Short Code</ion-label>
+			<ion-input placeholder="Enter Short Code"></ion-input>
+		</ion-item>
+
+		<ion-item class="mb-0">
+			<ion-toggle></ion-toggle>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Is a Sub-Item of</ion-label>
+			<ion-input placeholder="Enter Short Code"></ion-input>
+		</ion-item>
+
+		<ion-radio-group>
+			<ion-list-header>
+		      <ion-label>Assign To</ion-label>
+		    </ion-list-header>
+
+		    <div class="radio-items">
+				<ion-item lines="full">
+			      <ion-label>Me</ion-label>
+			      <ion-radio slot="start" value="me" checked></ion-radio>
+			    </ion-item>
+
+			    <ion-item>
+			      <ion-label>Everyone</ion-label>
+			      <ion-radio slot="start" value="everyone"></ion-radio>
+			    </ion-item>
+			</div>
+		</ion-radio-group>
+	</ion-list>
+
+</ion-content>

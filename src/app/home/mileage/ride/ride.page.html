@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+  		<ion-button class="start" (click)="closeModal()">
+  			<ion-icon slot="icon-only" name="ios-close"></ion-icon>
+  		</ion-button>
+	</ion-buttons>
+    <ion-title>Start Ride</ion-title>
+    <ion-buttons class="stop" slot="end">
+    	<ion-button>Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-progress-bar type="indeterminate" *ngIf="!mapLoaded"></ion-progress-bar>
+
+
+	<div class="map-wrapper">
+		<div class="location" *ngIf="mapLoaded">
+			<label>From</label>
+			<ion-input [ngModel]="start_from"></ion-input>
+			<a class="clear" (click)="clearLocation()"><ion-icon name="ios-close-circle"></ion-icon></a>
+		</div>
+		<div class="ride-actions">
+			<ion-button [disabled]="!mapLoaded" *ngIf="!tracking" class="start" expand="block" size="large" (click)="startTracking()">
+		    	START RIDE
+		    </ion-button>
+		    <ion-button *ngIf="tracking" class="stop" expand="block" size="large" (click)="stopTracking()">
+		    	STOP RIDE
+		    </ion-button>
+		</div>
+		<div class="location-button">
+			<ion-button [disabled]="!mapLoaded" shape="round" size="small" color="dark" (click)="recenter()">
+				<ion-icon slot="icon-only" name="locate" mode="md"></ion-icon>
+			</ion-button>
+		</div>
+
+		<div id="map" class="map" #map></div>
+
+		<!-- <agm-map #map 
+			[disableDefaultUI]="true" 
+			[latitude]="startLocation.lat" 
+			[longitude]="startLocation.lng" 
+			[zoom]="zoom" 
+			[zoomControl]="false" 
+			[streetViewControl]="false"
+			(mapReady)="onMapReady()">
+				<agm-marker [latitude]="startLocation.lat" [longitude]="startLocation.lng"></agm-marker>
+				<agm-marker #currentPosition *ngIf="tracking" [latitude]="currentLocation.lat" [longitude]="currentLocation.lng"></agm-marker>
+				<agm-circle *ngIf="tracking" [fillColor]="'#42cbf5'" [fillOpacity]="0.2" [visible]="mapRef.zoom > 16" [radius]="30" [latitude]="currentLocation.lat" [longitude]="currentLocation.lng"></agm-circle>
+		</agm-map> -->
+	</div>
+
+</ion-content>

@@ -1,0 +1,74 @@
+ion-toolbar{
+	--background : #ffffff;
+
+	ion-button {
+		--ion-toolbar-color: #000000;
+
+		&.btn-save{
+			--ion-toolbar-color: #EFB725;
+		}
+	}	
+}
+
+.divider{
+	hr {
+	    margin-bottom: 20px;
+	    margin-top: 20px;
+	}
+}
+
+.message{
+    font-family: 'San Francisco Text';
+    &.alert{
+        label{
+            font-weight: 500;
+            color: #FF1010;
+            font-size: 16px;
+        }
+    }
+    p{
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    &.important{
+	    background: #F7F7F7;
+	    padding: 30px 16px;
+	    margin-left: -16px;
+	    margin-right: -16px;
+    	p{
+    		font-size: 16px;
+    		margin-bottom: 0;
+    	}
+	    margin-bottom: 1rem;
+    }
+}
+
+.guide {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 0;
+    color: #000000;
+
+    > h4{
+    	font-family: 'San Francisco Text';
+    	font-weight: 500;
+	    font-size: 16px;
+	    margin-bottom: 10px;
+    	margin-top: 0;
+    }
+
+    ion-input {
+	    --background: #F7F7F7;
+	    --padding-start: 10px;
+	    --padding-end: 10px;
+	    --color: #000000;
+	    font-family: 'San Francisco Text';
+	    font-weight: 600;
+	    font-size: 18px;
+        border-radius: 6px;
+        border: 1px solid #DEDEDE;
+        pointer-events: none;
+	}
+
+}

@@ -1,0 +1,24 @@
+
+<ion-content padding class="login-page">
+
+	<div class="login-page-wrap" [ngClass]="{ 'has-touch-id' : sensorAvailable && fpEnabled}">
+		<div class="logo">
+			<ion-img src="/assets/logo.svg"></ion-img>
+		</div>
+
+		<h1>Welcome to DC Solar</h1>
+
+		<div class="login-btns">
+			<ion-button expand="block" color="primary" size="large" [routerLink]="'/login/signin'" routerDirection="forward">EMPLOYEE</ion-button>
+			<ion-button expand="block" color="secondary" size="large" [routerLink]="'/login/signin'" routerDirection="forward">ADMIN</ion-button>
+		</div>
+
+
+		<div class="touch-id" *ngIf="sensorAvailable && fpEnabled">
+			<p>Now! Quick Login Use Touch ID</p>
+			<a href="javascript:;" (click)="openTouchID()"><ion-img src="/assets/fingerprint.svg"></ion-img></a>
+			<span>Use Touch ID</span>
+		</div>
+	</div>
+
+</ion-content>

@@ -1,5 +1,8 @@
 {
   "name": "dcsolar",
-  "integrations": {},
-  "type": "angular"
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "7b9b14c1"
 }

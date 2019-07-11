@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Calendar</ion-title>
+    <ion-buttons slot="end">
+    	<ion-button class="user-profile-button" (click)="presentProfileModal()">
+    		<ion-img slot="end" [src]="user.avatar"></ion-img>
+    	</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-light">
+
+  <ion-card class="card-clockin" mode="md" routerLink="/home/calendar/details">
+    <ion-card-content>
+      <div class="event-title">
+        <h6>60 Minute Meeting</h6>
+        <span><ion-icon name="md-time"></ion-icon> 60 Mins</span>
+      </div>
+      <div class="event-client event-meta">
+        <span>Client</span>
+        <p>Phil Talbot</p>
+      </div>
+      <div class="event-location event-meta">
+        <span>Location</span>
+        <p>Astor Court, 2nd Street</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-clockin" mode="md" routerLink="/home/calendar/details">
+    <ion-card-content>
+      <div class="event-title">
+        <h6>30 Minute Meeting</h6>
+        <span><ion-icon name="md-time"></ion-icon> 30 Mins</span>
+      </div>
+      <div class="event-client event-meta">
+        <span>Client</span>
+        <p>Phil Talbot</p>
+      </div>
+      <div class="event-location event-meta">
+        <span>Location</span>
+        <p>Astor Court, 2nd Street</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-clockin" mode="md" routerLink="/home/calendar/details">
+    <ion-card-content>
+      <div class="event-title">
+        <h6>15 Minute Meeting</h6>
+        <span><ion-icon name="md-time"></ion-icon> 15 Mins</span>
+      </div>
+      <div class="event-client event-meta">
+        <span>Client</span>
+        <p>Phil Talbot</p>
+      </div>
+      <div class="event-location event-meta">
+        <span>Location</span>
+        <p>Astor Court, 2nd Street</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-clockin" mode="md" routerLink="/home/calendar/details">
+    <ion-card-content>
+      <div class="event-title">
+        <h6>10 Minute Meeting</h6>
+        <span><ion-icon name="md-time"></ion-icon> 10 Mins</span>
+      </div>
+      <div class="event-client event-meta">
+        <span>Client</span>
+        <p>Phil Talbot</p>
+      </div>
+      <div class="event-location event-meta">
+        <span>Location</span>
+        <p>Astor Court, 2nd Street</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/home/calendar/add">
+    <ion-fab-button>
+      <ion-icon name="md-add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

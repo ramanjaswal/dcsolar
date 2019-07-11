@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="325" height="161" viewBox="0 0 325 161">
+  <g id="Group_63" data-name="Group 63" transform="translate(-25 -502)">
+    <g id="Group_61" data-name="Group 61">
+      <line id="Line_8" data-name="Line 8" x2="325" transform="translate(25 518.5)" fill="none" stroke="#707070" stroke-width="1" opacity="0.1"/>
+      <line id="Line_9" data-name="Line 9" x2="325" transform="translate(25 548.5)" fill="none" stroke="#707070" stroke-width="1" opacity="0.1"/>
+      <line id="Line_16" data-name="Line 16" x2="325" transform="translate(25 578.5)" fill="none" stroke="#707070" stroke-width="1" opacity="0.1"/>
+      <line id="Line_17" data-name="Line 17" x2="325" transform="translate(25 608.5)" fill="none" stroke="#707070" stroke-width="1" opacity="0.1"/>
+      <line id="Line_18" data-name="Line 18" x2="325" transform="translate(25 638.5)" fill="none" stroke="#707070" stroke-width="1" opacity="0.1"/>
+      <text id="_8h" data-name="8h" transform="translate(319 513)" font-size="10" font-family="SegoeUI, Segoe UI" opacity="0.2"><tspan x="0" y="0">8h</tspan></text>
+      <text id="MON" transform="translate(44 660)" font-size="10" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">MON</tspan></text>
+      <text id="TUE" transform="translate(86 660)" font-size="10" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">TUE</tspan></text>
+      <text id="WED" transform="translate(125 660)" font-size="10" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">WED</tspan></text>
+      <text id="THU" transform="translate(166 660)" font-size="10" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">THU</tspan></text>
+      <text id="FRI" transform="translate(207 660)" font-size="10" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">FRI</tspan></text>
+      <text id="SAT" transform="translate(246 660)" font-size="10" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">SAT</tspan></text>
+      <text id="SUN" transform="translate(284 660)" font-size="10" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">SUN</tspan></text>
+      <text id="_6h" data-name="6h" transform="translate(319 543)" font-size="10" font-family="SegoeUI, Segoe UI" opacity="0.2"><tspan x="0" y="0">6h</tspan></text>
+      <text id="_4h" data-name="4h" transform="translate(319 573)" font-size="10" font-family="SegoeUI, Segoe UI" opacity="0.2"><tspan x="0" y="0">4h</tspan></text>
+      <text id="_2h" data-name="2h" transform="translate(319 603)" font-size="10" font-family="SegoeUI, Segoe UI" opacity="0.2"><tspan x="0" y="0">2h</tspan></text>
+      <text id="_0h" data-name="0h" transform="translate(319 633)" font-size="10" font-family="SegoeUI, Segoe UI" opacity="0.2"><tspan x="0" y="0">0h</tspan></text>
+    </g>
+    <g id="Group_62" data-name="Group 62">
+      <line id="Line_19" data-name="Line 19" x2="25" transform="translate(42.5 638.5)" fill="none" stroke="#efb725" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_20" data-name="Line 20" x2="25" transform="translate(82.5 638.5)" fill="none" stroke="#c3c3c3" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_21" data-name="Line 21" x2="25" transform="translate(122.5 638.5)" fill="none" stroke="#efb725" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_22" data-name="Line 22" x2="25" transform="translate(162.5 638.5)" fill="none" stroke="#c3c3c3" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_23" data-name="Line 23" x2="25" transform="translate(201.5 638.5)" fill="none" stroke="#efb725" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_24" data-name="Line 24" x2="25" transform="translate(241.5 638.5)" fill="none" stroke="#c3c3c3" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_25" data-name="Line 25" x2="25" transform="translate(281.5 638.5)" fill="none" stroke="#c3c3c3" stroke-linecap="round" stroke-width="1"/>
+      <rect id="Rectangle_16" data-name="Rectangle 16" width="26" height="118" transform="translate(42 519)" fill="#efb725"/>
+      <rect id="Rectangle_17" data-name="Rectangle 17" width="26" height="118" transform="translate(122 519)" fill="#efb725"/>
+      <rect id="Rectangle_18" data-name="Rectangle 18" width="26" height="118" transform="translate(201 519)" fill="#efb725"/>
+      <rect id="Rectangle_21" data-name="Rectangle 21" width="26" height="104" transform="translate(162 533)" fill="#c3c3c3"/>
+      <rect id="Rectangle_22" data-name="Rectangle 22" width="26" height="74" transform="translate(82 563)" fill="#c3c3c3"/>
+    </g>
+  </g>
+</svg>

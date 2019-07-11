@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+// import { RouterModule } from '@angular/router';
 
+import { TabsPageRoutingModule } from './tabs-routing.module';
 import { HomePage } from './home.page';
 
 @NgModule({
@@ -11,12 +12,13 @@ import { HomePage } from './home.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: HomePage
-      }
-    ])
+    TabsPageRoutingModule
+    // RouterModule.forChild([
+    //   {
+    //     path: '',
+    //     component: HomePage
+    //   }
+    // ])
   ],
   declarations: [HomePage]
 })

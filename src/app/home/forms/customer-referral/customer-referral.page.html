@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+  		<ion-button (click)="closeModal()">
+  			<ion-icon slot="icon-only" name="ios-close"></ion-icon>
+  		</ion-button>
+	</ion-buttons>
+    <ion-title>Customer Referral</ion-title>
+    <ion-buttons slot="end">
+  		<ion-button class="btn-save" (click)="saveForm()" [disabled]="form.invalid">
+  			Save
+  		</ion-button>
+	</ion-buttons>
+  </ion-toolbar>
+  <ion-progress-bar type="indeterminate" *ngIf="loadingCities"></ion-progress-bar>
+</ion-header>
+
+<ion-content padding>
+
+	<p>Checks will only be issued once the job has passed final inspection, and the owner has been granted Permission to Operate by the utility.</p>
+
+	<ion-list class="list-forms mb-0" lines="none" [formGroup]="form">
+		<ion-item>
+			<ion-label position="stacked">Referred Job Name</ion-label>
+			<ion-input placeholder="" formControlName="referred_job_name"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Make check payable to</ion-label>
+			<ion-input placeholder="" formControlName="check_payabled_to"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Name</ion-label>
+			<ion-input placeholder="" formControlName="name"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">Orientation</ion-label>
+			<div class="inputs-location">
+
+				<ion-item [disabled]="states.length === 0">
+					<ion-label position="stacked">State</ion-label>
+					<ion-select value="" placeholder="Select" formControlName="state" (ionChange)="getCities()">
+						<ion-select-option [value]="state.STATE_CODE" *ngFor="let state of states">{{ state.STATE_NAME }}</ion-select-option>
+					</ion-select>
+				</ion-item>
+
+				<ion-item [disabled]="cities.length === 0">
+					<ion-label position="stacked">City</ion-label>
+					<ion-select value="" placeholder="Select" formControlName="city">
+				      <ion-select-option [value]="city.CITY" *ngFor="let city of cities">{{city.CITY}}</ion-select-option>
+				    </ion-select>
+				</ion-item>
+				
+				<ion-item>
+					<ion-label position="stacked">Zip</ion-label>
+					<ion-input placeholder="" formControlName="zip"></ion-input>
+				</ion-item>
+			</div>
+		</ion-item>
+
+		<div class="date-time-inputs">
+			<ion-item>
+				<ion-label position="stacked">Phone 1</ion-label>
+				<ion-input placeholder="" formControlName="phone1" inputmode="number"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="stacked">Phone 2</ion-label>
+				<ion-input placeholder="" formControlName="phone2" inputmode="number"></ion-input>
+			</ion-item>
+		</div>
+
+		<ion-item>
+			<ion-label position="stacked">Email</ion-label>
+			<ion-input placeholder="" formControlName="email" inputmode="email" type="email"></ion-input>
+		</ion-item>
+
+		<ion-item>
+	      <ion-label position="stacked">Date</ion-label>
+	      <div class="picker-input">
+	        <ion-datetime display-format="DD/MM/YYYY" formControlName="date"></ion-datetime>
+	        <ion-icon name="md-calendar"></ion-icon>
+	      </div>
+	    </ion-item>
+
+	</ion-list>
+</ion-content>

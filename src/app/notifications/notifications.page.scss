@@ -1,0 +1,61 @@
+ion-toolbar{
+	--background : #ffffff;
+
+	ion-back-button{
+		--color: #000000;
+	}
+}
+
+ion-list{
+	ion-item{
+		--padding-start: 0;
+		--padding-end: 0;
+		--padding-top: 10px;
+		--padding-bottom: 10px;
+
+		div{
+			span{
+				display: block;
+				font-family: 'San Francisco Text';
+				width: 100%;
+
+				&.title{
+					font-weight: 500;
+					font-size: 18px;
+					color: #000;
+					margin-bottom: 2px;
+				}
+
+				&.description{
+					font-weight: 400;
+					font-size: 15px;
+					color: rgba(0,0,0,0.5);
+					margin-bottom: 2px;
+				}
+
+				&.time{
+					font-weight: 400;
+					font-size: 15px;
+					color: #000000;
+				}
+
+			}
+		}
+
+		&.unread{
+
+			&:before{
+				content: "";
+			    position: absolute;
+			    width: 60px;
+			    background: #EFB725;
+			    height: 1px;
+			    left: 0;
+			    bottom: 0;
+			    z-index: 99;
+			}
+			
+		}
+
+	}
+}

@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Forms</ion-title>
+    <ion-buttons slot="end">
+    	<ion-button class="user-profile-button" (click)="presentProfileModal()">
+    		<ion-img slot="end" [src]="user.avatar"></ion-img>
+    	</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-light">
+
+  <!-- <ion-progress-bar *ngIf="formLoading" type="indeterminate"></ion-progress-bar> -->
+
+  <ion-list class="select-cutomer" mode="md" lines="full" inset="true">
+    <ion-item button [routerLink]="'/customers/forms'">
+      <ion-icon name="md-person" slot="start"></ion-icon>
+      <ion-label *ngIf="!selectedContact">Select Customer</ion-label>
+      <ion-label *ngIf="selectedContact">{{selectedContact.first_name}} {{selectedContact.last_name}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- <div class="searchbar">
+    <ion-searchbar placeholder="Search Contact (Enter min 3 characters)" [searchIcon]="'md-person'" [(ngModel)]="search_query" (ionChange)="searchContacts()"></ion-searchbar>
+
+    <ion-list >
+      <ion-item button *ngFor="let contact of contacts" detail="false" (click)="selectContact(contact)">
+        <ion-label>{{contact.first_name}} {{contact.last_name}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div> -->
+
+  <ion-list class="forms-list" lines="none">
+
+    <ion-item button detail="false" (click)="presentFormModal($event, forms.pvSiteVisit)">
+        <ion-label>PV Site Visit</ion-label>
+        <ion-button fill="clear" slot="end" (click)="presentPopover($event)" title="popover">
+          <ion-icon name="md-more" slot="icon-only"></ion-icon>
+        </ion-button>
+    </ion-item>
+
+    <ion-item button detail="false" (click)="presentFormModal($event, forms.prePvSite)">
+      <ion-label>Pre PV Site</ion-label>
+      <ion-button fill="clear" slot="end" (click)="presentPopover($event)" title="popover">
+        <ion-icon name="md-more" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <!-- <ion-item button detail="false"> --> <!-- class="item-active" -->
+      <!-- <ion-label>Site Visit</ion-label> -->
+      <!-- <ion-icon name="checkmark-circle" slot="end" class="checkmark"></ion-icon> -->
+      <!-- <ion-button fill="clear" slot="end" (click)="presentPopover($event)" title="popover">
+        <ion-icon name="md-more" slot="icon-only"></ion-icon>
+      </ion-button> -->
+    <!-- </ion-item> -->
+    <ion-item button detail="false" (click)="presentFormModal($event, forms.closeOfSale)">
+      <ion-label>Close of Sale Checklist</ion-label>
+      <ion-button fill="clear" slot="end" (click)="presentPopover($event)" title="popover">
+        <ion-icon name="md-more" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <!-- <ion-item button detail="false">
+      <ion-label>Permit Pack</ion-label>
+      <ion-button fill="clear" slot="end" (click)="presentPopover($event)" title="popover">
+        <ion-icon name="md-more" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item> -->
+    <ion-item button detail="false" (click)="presentFormModal($event, forms.initialCheckOff)">
+      <ion-label>Initial Check Off</ion-label> 
+      <ion-button fill="clear" slot="end" (click)="presentPopover($event)" title="popover">
+        <ion-icon name="md-more" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item button detail="false" (click)="presentFormModal($event, forms.finalCheckOff)"> 
+      <ion-label>Final Check Off</ion-label>
+      <ion-button fill="clear" slot="end" (click)="presentPopover($event)" title="popover">
+        <ion-icon name="md-more" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item button detail="false" (click)="presentFormModal($event, forms.customerReferral)"> 
+      <ion-label>Customer Referral</ion-label>
+      <ion-button fill="clear" slot="end" (click)="presentPopover($event)" title="popover">
+        <ion-icon name="md-more" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+    
+  </ion-list>
+
+</ion-content>

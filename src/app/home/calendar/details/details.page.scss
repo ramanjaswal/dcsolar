@@ -1,0 +1,91 @@
+ion-toolbar{
+	--background : #ffffff;
+
+	ion-back-button{
+		--color: #000000;
+	}
+}
+
+.event-title{
+	background: #fff;
+    padding: 16px;
+    margin-top: -16px;
+    margin-left: -16px;
+    margin-right: -16px;
+
+	> h6{
+		font-family: 'San Francisco Text';
+		font-weight: 500;
+		font-size: 22px;
+		color: #000000;
+	    margin-top: 5px;
+		margin-bottom: 5px;
+	}
+
+	> span{
+		font-family: 'San Francisco Text';
+		font-weight: 500;
+		font-size: 16px;
+		color: #B2B2B2;
+
+		ion-icon{
+		    margin-bottom: -4px;
+		    font-size: 20px;
+		    margin-right: 2px;
+		}
+
+	}
+}
+
+.card-trip{
+	--background: #fff;
+	margin-top: 1.2rem;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+
+	ion-card-content{
+
+		.trip-details {
+		    list-style: none;
+		    padding: 0;
+		    margin: 0;
+		    margin-top: 1rem;
+
+		    > li{
+		    	> label{
+		    		font-family: 'San Francisco Text';
+					font-weight: 500;
+					font-size: 12px;
+					color: rgba(0,0,0,0.3);
+		    	}
+		    	> p{
+		    		font-family: 'San Francisco Text';
+					font-weight: 500;
+					font-size: 16px;
+					color: #000000;
+				    margin-bottom: 3px;
+		    	}
+
+		    	&:last-child{
+		    		border-bottom: 0;
+		    	}
+		    }
+		}
+	}
+}
+
+.event-actions {
+
+    ion-button{
+    	font-family: 'San Francisco Text';
+		font-weight: 600;
+		font-size: 18px;
+		height: 55px;
+
+		&.stop{
+			margin-top: 1rem;
+			--background: #FF5F5F;
+		}
+    }
+}

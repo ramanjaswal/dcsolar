@@ -1,0 +1,109 @@
+ion-toolbar{
+	--background : #ffffff;
+	--padding-start: 10px; 	
+	--padding-end: 10px; 
+
+	ion-button {
+		&.start{
+			--ion-toolbar-color: #000000;
+		}
+		&.stop{
+			--ion-toolbar-color: #EFB725
+		}
+		
+	}	
+}
+
+.map-wrapper {
+    height: 100%;
+    position: relative;
+
+    #map {
+		height: 100%;
+	}
+
+	.ride-actions {
+	    position: absolute;
+	    z-index: 99;
+	    width: 100%;
+	    padding: 0 25px 30px;
+	    bottom: 0;
+
+	    ion-button{
+	    	font-family: 'San Francisco Text';
+			font-weight: 600;
+			font-size: 18px;
+			height: 55px;
+
+			&.stop{
+				--background: #FF5F5F;
+			}
+	    }
+	}
+
+	.location-button {
+		position: absolute;
+		bottom: 95px;
+		z-index: 99;
+		right: 26px;
+
+		ion-button{
+			--padding-start: 10px;
+			--padding-end: 10px;
+			--padding-bottom: 10px;
+			--padding-top: 10px;
+			height: auto;
+			--border-radius: 50%;
+		}
+	}
+
+	.location {
+	    position: absolute;
+	    z-index: 99;
+	    background: #FFFFFF;
+	    width: calc(100% - 50px);
+	    left: 25px;
+	    top: 30px;
+	    border-radius: 6px;
+	    padding: 10px 40px 10px 40px;
+        box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.1);
+
+	    > label{
+	    	font-family: 'San Francisco Text';
+			font-weight: 500;
+			font-size: 11px;
+			color: rgba(0,0,0,0.3);
+			display: block;
+	    }
+
+	    ion-input{
+	    	font-family: 'San Francisco Text';
+			font-weight: 500;
+			font-size: 14px;
+			--color	: #000;
+			--padding-top: 0;
+			--padding-bottom: 0;
+			--padding-start: 0;
+	    }
+
+	    &:before{
+	    	content: "";
+	    	background-image: url('/assets/icon-location.svg');
+	    	width: 18px;
+		    height: 18px;
+		    position: absolute;
+		    background-size: 100%;
+		    left: 12px;
+		    top: 15px;
+	    }
+
+	    >.clear {
+		    position: absolute;
+		    right: 10px;
+		    top: 10px;
+		    font-size: 28px;
+		    color: #E2E2E2;
+		    cursor: pointer;
+		}
+	}
+}

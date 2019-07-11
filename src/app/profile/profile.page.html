@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+  		<ion-button (click)="closeModal()">
+  			<ion-icon slot="icon-only" name="ios-close"></ion-icon>
+  		</ion-button>
+	</ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+	<div class="user-card">
+		<div class="avatar">
+			<ion-img [ngClass]="{ 'hidden' : !showAvatar }" *ngIf="user && user.avatar" [src]="user.avatar"></ion-img>
+			<ion-skeleton-text *ngIf="!showAvatar" class="skeleton-center skeleton-avatar" animated></ion-skeleton-text>
+			<span class="status {{ user.online_status ? 'active' : '' }}"></span>
+		</div>
+		<div *ngIf="user.firstname">
+			<h1>{{user.firstname}} <span *ngIf="user.lastname">{{user.lastname}}</span></h1>
+			<span class="user-role">{{user.role}}</span>
+		</div>
+		<div *ngIf="!user.firstname">
+			<h1><ion-skeleton-text class="skeleton-center" animated width="60%" style="height: 30px;"></ion-skeleton-text></h1>
+			<span><ion-skeleton-text class="skeleton-center" animated width="40%"></ion-skeleton-text></span>
+		</div>
+	</div>
+
+
+	<form class="profile-form">
+
+		<ion-item-group class="user-info">
+			<ion-item>
+			  <ion-label position="stacked">Username</ion-label>
+			  <ion-input name="username" disabled [(ngModel)]="user.username"></ion-input>
+			</ion-item>
+
+			<ion-item>
+			  <ion-label position="stacked">Password</ion-label>
+			  <ion-input type="password" disabled inputmode="password" name="password" [(ngModel)]="user.password"></ion-input>
+			</ion-item>
+
+
+			<ion-item>
+			  <ion-label position="stacked">Email Address</ion-label>
+			  <ion-input type="email" disabled inputmode="email" name="email" [(ngModel)]="user.email"></ion-input>
+			</ion-item>
+
+			<ion-item button detail="false" (click)="toggleStatus()" lines="full">
+			  	<ion-label>Status</ion-label>
+			  	<label class="icon-online-status" slot='start'>
+			  		<ion-icon name="radio-button-off" *ngIf="!this.user.online_status"></ion-icon>
+			  		<ion-icon name="radio-button-on" *ngIf="this.user.online_status"></ion-icon>
+			  	</label>
+  				<!-- <ion-radio mode="md" slot="start" checked="false" ></ion-radio> -->
+			</ion-item>
+		</ion-item-group>
+
+		<ion-item-group class="notifications">
+			<ion-list-header>
+			    <ion-label>Notifications</ion-label>
+		  	</ion-list-header>
+
+		  	<ion-item>
+			    <ion-label>Mobile Notifications</ion-label>
+			    <ion-toggle name="mobile_notifications" [(ngModel)]="user.mobile_notifications" (ionChange)="updateProfile($event)"></ion-toggle>
+		  	</ion-item>
+
+		  	<ion-item>
+			    <ion-label>Email Notifications</ion-label>
+			    <ion-toggle name="email_notifications" [(ngModel)]="user.email_notifications" (ionChange)="updateProfile($event)"></ion-toggle>
+		  	</ion-item>
+		</ion-item-group>
+
+		<ion-item-group class="security" *ngIf="sensorAvailable">
+		  	<ion-list-header>
+			    <ion-label>Security</ion-label>
+		  	</ion-list-header>
+
+		  	<ion-item (click)="setUpTouchID($event)">
+			    <ion-label>Sign in with Touch ID</ion-label>
+			    <ion-toggle name="enable_touch" [(ngModel)]="user.enable_touch"></ion-toggle>
+		  	</ion-item>
+		 </ion-item-group>
+
+	</form>
+
+</ion-content>

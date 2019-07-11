@@ -1,0 +1,203 @@
+ion-card{
+	--background: #ffffff;
+}
+
+.clock-skeleton{
+	ion-skeleton-text{
+		height: 104px;
+		margin: 0 auto;
+	}
+}
+
+.barchart-skeleton{
+    margin-top: 1rem;
+    margin-bottom: 0;
+    height: 172px;
+}
+
+.piechart-skeleton{
+    margin-bottom: 1.5rem;
+    margin-bottom: 0;
+    height: 172px;
+}
+
+ion-card-content{
+	&.loading{
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
+ion-refresher {
+    background: #f4f4f4;
+}
+
+.card-clockin{
+	margin-top: 15px;
+
+	ion-card-header{
+	    padding: 0;
+
+	    &.loading{
+    	    opacity: 0.5;
+    		pointer-events: none;
+	    }
+	}
+
+	ul{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		display: flex;
+		align-items: center;
+
+		> li{
+			flex: 0 0 33.33%;
+			text-align: center;
+
+			> .time{
+				h1{
+					font-weight: 700;
+					color: #000;
+					font-size: 72px;
+					
+				}
+				span{
+					display: block;
+					font-size: 12px;
+					color: #000000;
+				}
+			}
+
+			.toggle-clock{
+				width: 60px;
+				height: 60px;
+
+				ion-icon{
+				    font-size: 20px;
+    				margin-right: -4px;
+				}
+
+				&.stop{
+					--background: #FF5F5F;
+					ion-icon{
+					    font-size: 22px;
+	    				margin-right: 0;
+					}
+				}
+
+				&.loading{
+					opacity: 0.5;
+					pointer-events: none;
+				}
+			}
+		}
+	}
+}
+
+%-card-with-input{
+	margin-top: 15px;
+	ion-card-content{
+		padding: 2px 12px 1px 2px;
+
+		ion-item{
+			--background: none;
+		    --border-color: #fff;
+			--box-shadow: none;
+		}
+
+		ion-input{
+			--placeholder-color: #B2B2B2;
+		}
+	}
+}
+
+.card-customer{
+	@extend %-card-with-input;
+}
+.card-mileage{
+	@extend %-card-with-input;
+}
+.card-comments{
+	@extend %-card-with-input;
+}
+
+.toggle-clock{
+	--border-radius: 50%;
+}
+
+.card-clocked-hours{
+    margin-top: 15px;
+    h6{
+    	color: #000000;
+    	font-family: 'San Francisco Text';
+		font-weight: 500;
+		font-size: 16px;
+    }
+}
+
+.card-pie-chart{
+	margin-top: 15px;
+	margin-bottom: 20px;
+
+	ion-img {
+	    max-width: 180px;
+	    margin: 20px auto;
+	}
+	.the-data {
+	    padding: 0;
+	    list-style: none;
+	    margin-top: 0;
+	    margin-left: -20px;
+	    margin-right: -20px;
+	    margin-bottom: -20px;
+
+	    >li{
+	    	border-top: 1px solid #f0f0f0;
+	    	padding: 10px 15px;
+
+	    	span{
+	    		display: inline-block;
+	    		font-family: 'San Francisco Text';
+				font-weight: 400;
+
+	    		&.color{
+	    			
+	    			width: 8px;
+	    			height: 8px;
+	    			border-radius: 50%;
+	    			margin-right: 20px;
+
+	    			&.purple{
+	    				background-color: #9B9BFF;
+	    			}
+	    			&.orange{
+	    				background-color: #FFD566;
+	    			}
+	    			&.grey{
+	    				background-color: #DEDEDE;
+	    			}
+
+	    		}
+
+	    		&.title{
+	    			color: #000;
+	    			font-size: 14px;
+	    		}
+
+	    		&.time{
+	    			color: #000;
+	    			font-size: 14px;
+	    			float: right;
+	    		}
+	    	}
+	    }
+	}
+}
+
+.bar-chart{
+    margin-top: 1rem;
+}
+.pie-chart{
+	margin-bottom: 1.5rem;
+}

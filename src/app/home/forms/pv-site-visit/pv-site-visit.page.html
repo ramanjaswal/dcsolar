@@ -1,0 +1,719 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+  		<ion-button (click)="closeModal()">
+  			<ion-icon slot="icon-only" name="ios-close"></ion-icon>
+  		</ion-button>
+	</ion-buttons>
+    <ion-title>PV Site Visit</ion-title>
+    <ion-buttons slot="end">
+  		<ion-button class="btn-save" (click)="saveForm()" [disabled]="form.invalid">
+  			Save
+  		</ion-button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list class="list-forms" lines="none" [formGroup]="form">
+		<ion-item>
+			<ion-label position="stacked">Employee Name</ion-label>
+			<ion-input placeholder="" formControlName="employeeName"></ion-input>
+		</ion-item>
+
+		<div class="date-time-inputs">
+			<ion-item>
+				<ion-label position="stacked">Date</ion-label>
+				<div class="picker-input">
+					<ion-datetime display-format="DD/MM/YYYY" formControlName="visitDate"></ion-datetime>
+					<ion-icon name="md-calendar"></ion-icon>
+				</div>
+			</ion-item>
+			<ion-item>
+				<ion-label position="stacked">Time</ion-label>
+				<div class="picker-input">
+					<ion-datetime display-format="hh:mm A" formControlName="visitTime"></ion-datetime>
+					<ion-icon name="md-time"></ion-icon>
+				</div>
+			</ion-item>
+		</div>
+
+		<ion-list-header>
+			<ion-label>Project</ion-label>
+		</ion-list-header>
+
+		<div formGroupName="project">
+			<ion-item>
+				<ion-label position="stacked">Name</ion-label>
+				<ion-input placeholder="" formControlName="name"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Site Address</ion-label>
+				<ion-input placeholder="" formControlName="siteAddress"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Gate</ion-label>
+					<ion-segment formControlName="gate">
+						<ion-segment-button value="Yes">
+							<ion-label>YES</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="No">
+							<ion-label>NO</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Locked</ion-label>
+					<ion-segment formControlName="locked">
+						<ion-segment-button value="Yes">
+							<ion-label>YES</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="No">
+							<ion-label>NO</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">HOA</ion-label>
+					<ion-segment formControlName="hoa">
+						<ion-segment-button value="Yes">
+							<ion-label>YES</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="No">
+							<ion-label>NO</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Gate Code</ion-label>
+				<ion-input placeholder="" formControlName="gateCode"></ion-input>
+			</ion-item>
+
+			<div class="date-time-inputs">
+				<ion-item>
+					<ion-label position="stacked">Phone 1</ion-label>
+					<ion-input placeholder="" formControlName="phone1" inputmode="tel"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Phone 2</ion-label>
+					<ion-input placeholder="" formControlName="phone2" inputmode="tel"></ion-input>
+				</ion-item>
+			</div>
+
+			<ion-item>
+				<ion-label position="stacked">Email</ion-label>
+				<ion-input type="email" placeholder="" inputmode="email" formControlName="email"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Building Jurisdiction</ion-label>
+				<ion-select formControlName="buildingJurisdiction">
+					<ion-select-option value="city">City</ion-select-option>
+					<ion-select-option value="state">Country</ion-select-option>
+					<ion-select-option value="other">Other</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item [hidden]="form.get('project').get('buildingJurisdiction').value != 'other'">
+				<ion-label position="stacked">Other</ion-label>
+				<ion-input placeholder="Building Jurisdiction" formControlName="buildingJurisdictionOther" [required]="form.get('project').get('buildingJurisdiction').value == 'other'"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Elevation</ion-label>
+				<ion-input placeholder="" formControlName="elevation"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Utility Provider</ion-label>
+				<ion-input placeholder="" formControlName="utilityProvider"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Copy of Utility Bill</ion-label>
+				<ion-input placeholder="" formControlName="utilityBill"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Year Built</ion-label>
+				<ion-datetime display-format="YYYY" formControlName="yearBuilt"></ion-datetime>
+			</ion-item>
+
+			<ion-item formGroupName="ageOfRoof">
+				<ion-label position="stacked">Age of Roof</ion-label>
+				<div class="fraction-input">
+					<ion-input type="number" placeholder="" formControlName="num"></ion-input>
+					<span>/</span>
+					<ion-input type="number" placeholder="" formControlName="den"></ion-input>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Condition</ion-label>
+				<ion-input placeholder="" formControlName="condition"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">New Construction</ion-label>
+					<ion-segment formControlName="newConstruction">
+						<ion-segment-button value="Yes">
+							<ion-label>YES</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="No">
+							<ion-label>NO</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="Other">
+							<ion-label>Other</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-item [hidden]="form.get('project').get('newConstruction').value != 'Other'">
+				<ion-label position="stacked">Other</ion-label>
+				<ion-input placeholder="New Construction" formControlName="newConstructionOther" [required]="form.get('project').get('newConstruction').value == 'Other'"></ion-input>
+			</ion-item>
+
+		</div>
+
+		<ion-list-header>
+			<ion-label>Electrical Grid Type </ion-label>
+		</ion-list-header>
+
+		<div formGroupName="electricalGridType">
+			<ion-item>
+				<ion-label position="stacked">Phase</ion-label>
+				<ion-select formControlName="phase">
+					<ion-select-option value="single">Single</ion-select-option>
+					<ion-select-option value="three">Three</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Voltage</ion-label>
+				<ion-input placeholder="" formControlName="voltage" inputmode="number"></ion-input>
+			</ion-item>
+		</div>
+
+		<ion-list-header>
+			<ion-label>Existing Panel</ion-label>
+		</ion-list-header>
+
+		<div formGroupName="existingPanel">
+			<ion-item>
+				<ion-label position="stacked">Brand</ion-label>
+				<ion-input placeholder="" formControlName="brand"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Bus Amp Rating</ion-label>
+					<ion-segment class="sliced" formControlName="busAmpRating">
+						<ion-segment-button value="100">
+							<ion-label>100</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="125">
+							<ion-label>125</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="200">
+							<ion-label>200</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="225">
+							<ion-label>225</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="400">
+							<ion-label>400</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Main Breaker Size</ion-label>
+					<ion-segment class="sliced" formControlName="mainBreakerSize">
+						<ion-segment-button value="100">
+							<ion-label>100</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="125">
+							<ion-label>125</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="200">
+							<ion-label>200</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="400">
+							<ion-label>400</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Spaces in Panel</ion-label>
+				<ion-input placeholder="" formControlName="spacesInPanel"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Sub Panel</ion-label>
+					<ion-segment formControlName="subPanel">
+						<ion-segment-button value="Yes">
+							<ion-label>YES</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="No">
+							<ion-label>NO</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-item [hidden]="form.get('existingPanel').get('subPanel').value == 'No'">
+				<ion-label position="stacked">Qty</ion-label>
+				<ion-input placeholder="" formControlName="qty" inputmode="number" [required]="form.get('existingPanel').get('subPanel').value == 'Yes'"></ion-input>
+			</ion-item>
+
+			<ion-item [hidden]="form.get('existingPanel').get('subPanel').value == 'No'">
+				<ion-label position="stacked">Locations</ion-label>
+				<ion-input placeholder="" formControlName="locations" [required]="form.get('existingPanel').get('subPanel').value == 'Yes'"></ion-input>
+			</ion-item>
+		</div>
+		
+		<ion-list-header>
+			<ion-label>Distance from</ion-label>
+		</ion-list-header>
+
+		<div formGroupName="distanceFrom">
+			<div class="date-time-inputs">
+				<ion-item>
+					<ion-label position="stacked">Array to Main</ion-label>
+					<ion-input placeholder="" formControlName="arrayToMain"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Array to Sub</ion-label>
+					<ion-input placeholder="" formControlName="arrayToSub"></ion-input>
+				</ion-item>
+			</div>
+
+			<div class="date-time-inputs">
+				<ion-item>
+					<ion-label position="stacked">Main to Sub</ion-label>
+					<ion-input placeholder="" formControlName="mainToSub"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Other</ion-label>
+					<ion-input placeholder="" formControlName="other"></ion-input>
+				</ion-item>
+			</div>
+
+			<ion-item>
+				<ion-label position="stacked">Construction Detail</ion-label>
+				<ion-select formControlName="constructionDetail">
+					<ion-select-option value="residential">Residential</ion-select-option>
+					<ion-select-option value="commercial">Commercial</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Structure for</ion-label>
+				<ion-select formControlName="structureFor">
+					<ion-select-option value="parking">Parking</ion-select-option>
+					<ion-select-option value="shade">Shade</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Rafter/Truss</ion-label>
+				<ion-select formControlName="rafter">
+					<ion-select-option value="vert">Vert</ion-select-option>
+					<ion-select-option value="hiriz">Horiz</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Stud</ion-label>
+				<ion-select formControlName="stud">
+					<ion-select-option value="metal">Metal</ion-select-option>
+					<ion-select-option value="wood">Wood</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Size</ion-label>
+				<ion-select formControlName="size">
+					<ion-select-option value="2x4">2 x 4</ion-select-option>
+					<ion-select-option value="2x6">2 x 6</ion-select-option>
+					<ion-select-option value="other">Other</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item [hidden]="form.get('distanceFrom').get('size').value != 'other' ">
+				<ion-label position="stacked">Other</ion-label>
+				<ion-input placeholder="Size" formControlName="sizeOther" [required]="form.get('distanceFrom').get('size').value == 'other'"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Story</ion-label>
+				<ion-select formControlName="story">
+					<ion-select-option value="1">1</ion-select-option>
+					<ion-select-option value="2">2</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">How Easy to Access</ion-label>
+				<ion-input placeholder="" formControlName="howEasyToAccess"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Point of Access</ion-label>
+				<ion-input placeholder="" formControlName="pointOfAccess"></ion-input>
+			</ion-item>
+		</div>
+
+		<ion-list-header>
+			<ion-label>Roof Heights</ion-label>
+		</ion-list-header>
+
+		<div formGroupName="roof">
+			<div class="date-time-inputs" formGroupName="groundToGutter">
+				<ion-item>
+					<ion-label position="stacked">Ground to Gutter</ion-label>
+					<ion-input placeholder="1st" formControlName="first"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">&nbsp;</ion-label>
+					<ion-input placeholder="2nd" formControlName="second"></ion-input>
+				</ion-item>
+			</div>
+
+			<ion-list-header>
+				<ion-label>Ladder for</ion-label>
+			</ion-list-header>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Attic</ion-label>
+					<ion-segment class="sliced" formControlName="attic">
+						<ion-segment-button value="8">
+							<ion-label>8'</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="10">
+							<ion-label>10'</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="12">
+							<ion-label>12'</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-list-header>
+				<ion-label>Roof</ion-label>
+			</ion-list-header>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Extension</ion-label>
+					<ion-segment class="sliced" formControlName="extension">
+						<ion-segment-button value="12">
+							<ion-label>12'</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="16">
+							<ion-label>16'</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="20">
+							<ion-label>20'</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="24">
+							<ion-label>24'</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="30">
+							<ion-label>30'</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Qty</ion-label>
+				<ion-input placeholder="" formControlName="qty" inputmode="number"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<div class="input-append">
+					<ion-label position="stacked">Roof Pitch</ion-label>
+					<div>
+						<ion-input placeholder="" formControlName="roofPitch" inputmode="number"></ion-input>
+						<ion-label class="label-end" slot="end">/12</ion-label>
+					</div>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<div class="input-append">
+					<ion-label position="stacked">Tilt</ion-label>
+					<div>
+						<ion-input placeholder="" formControlName="tilt" inputmode="number"></ion-input>
+						<ion-label class="label-end" slot="end">Deg</ion-label>
+					</div>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Orientation</ion-label>
+				<div class="inputs-orientation" formGroupName="orientation">
+					<ion-input placeholder="1" formControlName="one"></ion-input>
+					<ion-input placeholder="2" formControlName="two"></ion-input>
+					<ion-input placeholder="3" formControlName="three"></ion-input>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Roof-Type</ion-label>
+					<ion-segment formControlName="roofType">
+						<ion-segment-button value="comp">
+							<ion-label>Comp</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="tile">
+							<ion-label>Tile</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="other">
+							<ion-label>Other</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-item [hidden]="form.get('roof').get('roofType').value !== 'other'">
+				<ion-label position="stacked">Other</ion-label>
+				<ion-input placeholder="" formControlName="roofTypeOther" [required]="form.get('roof').get('roofType').value === 'other'"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Did you do a physical layout?</ion-label>
+					<ion-segment formControlName="physicalLayout">
+						<ion-segment-button value="Yes">
+							<ion-label>YES</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="No">
+							<ion-label>NO</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+
+			<ion-item>
+				<div class="segment-input">
+					<ion-label position="stacked">Did you do a physical measurement?</ion-label>
+					<ion-segment formControlName="physicalMeasurement">
+						<ion-segment-button value="Yes">
+							<ion-label>YES</ion-label>
+						</ion-segment-button>
+						<ion-segment-button value="No">
+							<ion-label>NO</ion-label>
+						</ion-segment-button>
+					</ion-segment>
+				</div>
+			</ion-item>
+		</div>
+
+		<ion-list-header>
+			<ion-label>Upload Photos</ion-label>
+		</ion-list-header>
+
+		<div class="upload-button">
+			<label>Attic Access</label>
+			<ion-item button detail="false" (click)="uploadPhoto('atticAccess')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('atticAccess') > 0">{{ filesCount('atticAccess') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Roof Access</label>
+			<ion-item button detail="false" (click)="uploadPhoto('roofAccess')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('roofAccess') > 0">{{ filesCount('roofAccess') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Driveway to</label>
+			<ion-item button detail="false" (click)="uploadPhoto('driveWayTo')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('driveWayTo') > 0">{{ filesCount('driveWayTo') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>All Roofs with Panels</label>
+			<ion-item button detail="false" (click)="uploadPhoto('allRoofsWithPanels')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('allRoofsWithPanels') > 0">{{ filesCount('allRoofsWithPanels') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Main Panel (Near)</label>
+			<ion-item button detail="false" (click)="uploadPhoto('mainPanelNear')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('mainPanelNear') > 0">{{ filesCount('mainPanelNear') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Main Panel (Far)</label>
+			<ion-item button detail="false" (click)="uploadPhoto('mainPanelFar')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('mainPanelFar') > 0">{{ filesCount('mainPanelFar') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Main Breaker</label>
+			<ion-item button detail="false" (click)="uploadPhoto('mainBreaker')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('mainBreaker') > 0">{{ filesCount('mainBreaker') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Name Plate Rating</label>
+			<ion-item button detail="false" (click)="uploadPhoto('namePlateRating')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('namePlateRating') > 0">{{ filesCount('namePlateRating') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Deadfront (On)</label>
+			<ion-item button detail="false" (click)="uploadPhoto('deadfrontOn')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('deadfrontOn') > 0">{{ filesCount('deadfrontOn') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Deadfront (Off)</label>
+			<ion-item button detail="false" (click)="uploadPhoto('deadfrontOff')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('deadfrontOff') > 0">{{ filesCount('deadfrontOff') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Breakers</label>
+			<ion-item button detail="false" (click)="uploadPhoto('breakers')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('breakers') > 0">{{ filesCount('breakers') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>SMURF TUBE</label>
+			<ion-item button detail="false" (click)="uploadPhoto('smurfTube')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('smurfTube') > 0">{{ filesCount('smurfTube') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Sub Panel</label>
+			<ion-item button detail="false" (click)="uploadPhoto('subPanel')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('subPanel') > 0">{{ filesCount('subPanel') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Deadfront (On)</label>
+			<ion-item button detail="false" (click)="uploadPhoto('subPanelDeadfrontOn')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('subPanelDeadfrontOn') > 0">{{ filesCount('subPanelDeadfrontOn') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Deadfront (Off)</label>
+			<ion-item button detail="false" (click)="uploadPhoto('subPanelDeadfrontOff')"> 
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('subPanelDeadfrontOff') > 0">{{ filesCount('subPanelDeadfrontOff') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Breakers</label>
+			<ion-item button detail="false" (click)="uploadPhoto('subPanelBreakers')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('subPanelBreakers') > 0">{{ filesCount('subPanelBreakers') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<ion-list-header>
+			<ion-label>Ground Mount Photos</ion-label>
+		</ion-list-header>
+
+		<div class="upload-button">
+			<label>Location of Array/Structure</label>
+			<ion-item button detail="false" (click)="uploadPhoto('locationOfArray')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('locationOfArray') > 0">{{ filesCount('locationOfArray') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Ground for Trenching</label>
+			<ion-item button detail="false" (click)="uploadPhoto('groundForTrenching')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('groundForTrenching') > 0">{{ filesCount('groundForTrenching') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<div class="upload-button">
+			<label>Direction of Trench</label>
+			<ion-item button detail="false" (click)="uploadPhoto('directionOfTrench')">
+				<ion-label>Upload a photo</ion-label>
+				<ion-badge slot="end" *ngIf="filesCount('directionOfTrench') > 0">{{ filesCount('directionOfTrench') }}</ion-badge>
+				<ion-icon name="md-cloud-upload" slot="end"></ion-icon>
+			</ion-item>
+		</div>
+
+		<ion-item>
+			<ion-label position="stacked">Site Notes</ion-label>
+			<ion-textarea rows="5" formControlName="siteNotes"></ion-textarea>
+		</ion-item>
+
+	</ion-list>
+</ion-content>
