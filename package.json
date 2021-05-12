@@ -34,7 +34,7 @@
     "@ionic/angular": "^4.1.0",
     "@ionic/storage": "^2.2.0",
     "@mauron85/cordova-plugin-background-geolocation": "3.0.3",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "cordova-android": "7.1.4",
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-device": "^2.0.2",
